@@ -26,12 +26,10 @@ public class ServiciosService {
 
 	private Message m;
 
-	public Message addServicios(ServiciosModel cm) {
-		m = new Message();
-		cr.save(cc.ModelToEntity(cm));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Servicios Agregado Correctamente..");
-		return m;
+	public ServiciosModel addServicios(ServiciosModel cm) {
+		
+
+		return cc.EntityToModel(cr.save(cc.ModelToEntity(cm)));
 	}
 
 	public Message deleteServicios(ServiciosModel cm) {

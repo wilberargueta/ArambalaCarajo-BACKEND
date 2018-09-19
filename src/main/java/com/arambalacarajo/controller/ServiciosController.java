@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,32 +21,37 @@ public class ServiciosController {
 	@Autowired
 	@Qualifier("serviciosService")
 	private ServiciosService ss;
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios", method = RequestMethod.GET)
 	public List<ServiciosModel> lista() {
 
 		return ss.listaServicios();
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios/{id}", method = RequestMethod.GET)
 	public ServiciosModel byId(@PathVariable int id) {
 
 		return ss.findServiciosById(id);
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody ServiciosModel sm) {
+	public ServiciosModel nuevo(@RequestBody ServiciosModel sm) {
 
 		return ss.addServicios(sm);
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios", method = RequestMethod.PUT)
 	public Message update(@RequestBody ServiciosModel sm) {
 
 		return ss.updateServicios(sm);
 	}
-
-	@RequestMapping(path = "/api/servicios", method = RequestMethod.DELETE)
+	
+	@CrossOrigin(origins="*")
+	@RequestMapping(path = "/api/servicios/delete", method = RequestMethod.PUT)
 	public Message delete(@RequestBody ServiciosModel sm) {
 
 		return ss.deleteServicios(sm);

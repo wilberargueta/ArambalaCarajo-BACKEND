@@ -25,7 +25,7 @@ public class CompraProductosController {
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/compraProducto", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody CompraProductosModel cp) {
+	public CompraProductosModel nuevo(@RequestBody CompraProductosModel cp) {
 
 		return cps.addCompraProducto(cp);
 	}

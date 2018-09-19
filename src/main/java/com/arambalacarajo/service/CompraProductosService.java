@@ -37,12 +37,9 @@ public class CompraProductosService {
 	private Message m;
 	private final Log LOGGER = LogFactory.getLog(CompraProductosService.class); 
 
-	public Message addCompraProducto(CompraProductosModel cp) {
-		m = new Message();
-		cpr.save(cpc.ModelToEntity(cp));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("CompraProductos Agregado Correctamente..");
-		return m;
+	public CompraProductosModel addCompraProducto(CompraProductosModel cp) {
+		
+		return cpc.EntityToModel(cpr.save(cpc.ModelToEntity(cp)));
 	}
 
 	public Message deleteCompraProducto(CompraProductosModel cp) {

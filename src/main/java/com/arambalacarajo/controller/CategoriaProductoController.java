@@ -35,7 +35,7 @@ public class CategoriaProductoController {
 		return categoriaProductoRepository.saveAndFlush(cm);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/categoriaProducto", method = RequestMethod.DELETE)
+	@RequestMapping(path="/api/categoriaProducto/delete", method = RequestMethod.PUT)
 	public Message deleteCategoriaProducto(@RequestBody CategoriaProducto cm) {
 		Message m = new Message();
 		categoriaProductoRepository.delete(cm);

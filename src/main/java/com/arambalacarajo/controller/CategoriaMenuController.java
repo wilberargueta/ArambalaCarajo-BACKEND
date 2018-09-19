@@ -36,7 +36,7 @@ public class CategoriaMenuController {
 		return categoriaMenuRepository.saveAndFlush(cm);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/categoriaMenu", method = RequestMethod.DELETE)
+	@RequestMapping(path="/api/categoriaMenu/delete", method = RequestMethod.PUT)
 	public Message deleteCategoriaMenu(@RequestBody CategoriaMenu cm) {
 		Message m = new Message();
 		categoriaMenuRepository.delete(cm);
