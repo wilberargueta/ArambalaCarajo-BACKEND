@@ -20,12 +20,12 @@ public class MenuCategoriaMenu {
 	@Column(name="id_menu_categoria_menu")
 	private int idMenuCategoriaMenu;
 	
-	@ManyToOne
-	@JoinColumn(name="id_categoria_menu")
+	@OneToOne
+	@JoinColumn(name="id_categoria_menu", nullable =false)
 	private CategoriaMenu categoriaMenu;
 	
 	@OneToOne
-	@JoinColumn(name="id_menu")
+	@JoinColumn(name="id_menu", nullable= false)
 	private Menus menu;
 
 	public int getIdMenuCategoriaMenu() {

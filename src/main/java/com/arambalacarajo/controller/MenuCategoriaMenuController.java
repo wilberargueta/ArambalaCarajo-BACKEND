@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.arambalacarajo.entity.MenuCategoriaMenu;
+import com.arambalacarajo.entity.Menus;
 import com.arambalacarajo.model.Message;
 import com.arambalacarajo.repository.MenuCategoriaMenuRepository;
 
@@ -35,7 +36,7 @@ public class MenuCategoriaMenuController {
 		return menuCategoriaMenuRepository.saveAndFlush(cm);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/menuCategoriaMenu", method = RequestMethod.DELETE)
+	@RequestMapping(path="/api/menuCategoriaMenu/delete", method = RequestMethod.PUT)
 	public Message deleteMenuCategoriaMenu(@RequestBody MenuCategoriaMenu cm) {
 		Message m = new Message();
 		menuCategoriaMenuRepository.delete(cm);
@@ -48,6 +49,12 @@ public class MenuCategoriaMenuController {
 	@RequestMapping(path="/api/menuCategoriaMenu", method = RequestMethod.GET)
 	public List<MenuCategoriaMenu> allMenuCategoriaMenu() {
 		return menuCategoriaMenuRepository.findAll();
+	}
+	
+	@CrossOrigin("*")
+	@RequestMapping(path="/api/menuCategoriaMenu/menu", method = RequestMethod.POST)
+	public MenuCategoriaMenu categoriaMenuByMenu(@RequestBody Menus menu) {
+		return menuCategoriaMenuRepository.findMenuCategoriaMenuByMenu(menu);
 	}
 	
 }

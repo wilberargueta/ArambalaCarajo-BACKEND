@@ -26,12 +26,10 @@ public class MenusService {
 
 	private Message m;
 
-	public Message addMenus(MenusModel em) {
-		m = new Message();
-		evr.save(evc.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Menus Agregado Correctamente..");
-		return m;
+	public MenusModel addMenus(MenusModel em) {
+	
+		
+		return evc.EntityToModel(evr.save(evc.ModelToEntity(em)));
 	}
 
 	public Message deleteMenus(MenusModel em) {

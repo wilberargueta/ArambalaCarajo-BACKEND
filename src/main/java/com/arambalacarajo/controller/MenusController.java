@@ -25,7 +25,7 @@ public class MenusController {
 	
 	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/menus", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody MenusModel cp) {
+	public MenusModel nuevo(@RequestBody MenusModel cp) {
 		cp.setCreado(LocalDate.now());
 		cp.setActualizado(LocalDate.now());
 		cp.setActivo(true);
@@ -40,7 +40,7 @@ public class MenusController {
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menus", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/menus/delete", method = RequestMethod.PUT)
 	public Message eliminar(@RequestBody MenusModel cp) {
 
 		return cps.deleteMenus(cp);
@@ -59,5 +59,6 @@ public class MenusController {
 
 		return cps.findMenusById(id);
 	}
+	
 
 }

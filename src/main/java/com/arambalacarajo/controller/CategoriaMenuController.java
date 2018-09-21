@@ -50,9 +50,18 @@ public class CategoriaMenuController {
 	public List<CategoriaMenu> allCategoriaMenu() {
 		return categoriaMenuRepository.findAll();
 	}
+	
 	@CrossOrigin("*")
 	@RequestMapping(path="/api/categoriaMenu/{id}", method = RequestMethod.GET)
 	public CategoriaMenu getCategoriaMenuById(@PathVariable int id) {
 		return categoriaMenuRepository.findCategoriaMenuByIdCategoriaMenu(id);
 	}
+	
+	@CrossOrigin("*")
+	@RequestMapping(path="/api/categoriaMenu/busqueda/{categoriaMenu}", method = RequestMethod.GET)
+	public List<CategoriaMenu> getCategoriaMenuBySearch(@PathVariable String categoriaMenu) {
+		return categoriaMenuRepository.findCategoriaMenuByCategoriaStartingWith(categoriaMenu);
+	}
+	
+	
 }
