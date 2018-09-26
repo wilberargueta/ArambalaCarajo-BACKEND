@@ -56,5 +56,11 @@ public class RecetasController {
 
 		return cps.findRecetasById(id);
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(path = "/api/recetas/busqueda/{nombre}", method = RequestMethod.GET)
+	public List<RecetasModel> listaByName(@PathVariable String nombre) {
 
+		return cps.findRecetasByName(nombre);
+	}
 }

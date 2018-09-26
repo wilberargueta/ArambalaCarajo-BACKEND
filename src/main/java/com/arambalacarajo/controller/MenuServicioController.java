@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,39 +22,52 @@ public class MenuServicioController {
 	@Qualifier("menuServicioService")
 	private MenuServicioService ms;
 
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/menuServicio", method = RequestMethod.GET)
 	public List<MenuServicioModel> listaMenuServicios() {
 
 		return ms.listaMenuServicio();
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/menuServicio/{id}", method = RequestMethod.GET)
 	public MenuServicioModel byId(@PathVariable int id) {
 
 		return ms.findMenuServicioById(id);
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/menuServicio", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody MenuServicioModel cm) {
+	public MenuServicioModel nuevo(@RequestBody MenuServicioModel cm) {
 
 		return ms.addMenuServicio(cm);
 	}
-
+	
+	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/menuServicio", method = RequestMethod.PUT)
 	public Message update(@RequestBody MenuServicioModel cm) {
 
 		return ms.updateMenuServicio(cm);
 	}
-
-	@RequestMapping(path = "/api/menuServicio", method = RequestMethod.DELETE)
+	
+	@CrossOrigin(origins="*")
+	@RequestMapping(path = "/api/menuServicio/delete", method = RequestMethod.PUT)
 	public Message delete(@RequestBody MenuServicioModel cm) {
 
 		return ms.deleteMenuServicio(cm);
 	}
-
-	@RequestMapping(path = "/api/menuServicio/menu", method = RequestMethod.GET)
+	
+	@CrossOrigin(origins="*")
+	@RequestMapping(path = "/api/menuServicio/menu", method = RequestMethod.PUT)
 	public List<MenuServicioModel> byMenu(@RequestBody MenusModel mm) {
 
 		return ms.listaByMenu(mm);
+	}
+	
+	@CrossOrigin(origins="*")
+	@RequestMapping(path = "/api/menuServicio/delete/menu", method = RequestMethod.PUT)
+	public Message deleteByMenu(@RequestBody MenusModel cm) {
+
+		return ms.deleteMenuServicioByMenu(cm);
 	}
 }

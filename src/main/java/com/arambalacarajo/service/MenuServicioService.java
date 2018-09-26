@@ -32,17 +32,24 @@ public class MenuServicioService {
 
 	private Message m;
 
-	public Message addMenuServicio(MenuServicioModel cm) {
-		m = new Message();
-		cr.save(cc.ModelToEntity(cm));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("MenuServicio Agregado Correctamente..");
-		return m;
+	public MenuServicioModel addMenuServicio(MenuServicioModel cm) {
+
+		
+	
+		return cc.EntityToModel(cr.save(cc.ModelToEntity(cm)));
 	}
 
 	public Message deleteMenuServicio(MenuServicioModel cm) {
 		m = new Message();
 		cr.delete(cc.ModelToEntity(cm));
+		m.setStatus(HttpStatus.OK);
+		m.setMessage("MenuServicio Eliminado Correctamente..");
+		return m;
+	}
+	
+	public Message deleteMenuServicioByMenu(MenusModel cm) {
+		m = new Message();
+		cr.deleteMenuServicioByMenu(ec.ModelToEntity(cm));
 		m.setStatus(HttpStatus.OK);
 		m.setMessage("MenuServicio Eliminado Correctamente..");
 		return m;

@@ -32,12 +32,11 @@ public class MenuRecetasService {
 
 	private Message m;
 
-	public Message addMenuRecetas(MenuRecetasModel em) {
-		m = new Message();
-		evr.save(evc.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("MenuRecetas Agregado Correctamente..");
-		return m;
+	public MenuRecetasModel addMenuRecetas(MenuRecetasModel em) {
+	
+		
+		
+		return evc.EntityToModel(evr.save(evc.ModelToEntity(em)));
 	}
 
 	public Message deleteMenuRecetas(MenuRecetasModel em) {
@@ -47,7 +46,15 @@ public class MenuRecetasService {
 		m.setMessage("MenuRecetas Eliminado Correctamente..");
 		return m;
 	}
+	
 
+	public Message deleteMenuRecetasByMenu(MenusModel mm) {
+		m = new Message();
+		evr.deleteMenuRecetaBymenu(mc.ModelToEntity(mm));
+		m.setStatus(HttpStatus.OK);
+		m.setMessage("MenuRecetas Eliminado Correctamente..");
+		return m;
+	}
 	public Message updateMenuRecetas(MenuRecetasModel em) {
 		m = new Message();
 		evr.save(evc.ModelToEntity(em));

@@ -3,14 +3,14 @@ package com.arambalacarajo.convert;
 import org.springframework.stereotype.Component;
 
 import com.arambalacarajo.entity.Cabanas;
-import com.arambalacarajo.model.CabañasModel;
+import com.arambalacarajo.model.CabanasModel;
 
-@Component("cabañasConvert")
-public class CabañasConvert {
+@Component("cabanasConvert")
+public class CabanasConvert {
 
-	public Cabanas ModelToEntity(CabañasModel cm) {
+	public Cabanas ModelToEntity(CabanasModel cm) {
 		Cabanas c = new Cabanas();
-		c.setCodCabaña(cm.getCodCabana());
+		c.setCodCabana(cm.getCodCabana());
 		c.setNombre(cm.getNombre());
 		c.setPrecio(cm.getPrecio());
 		c.setDisponible(cm.isDisponible());
@@ -19,9 +19,9 @@ public class CabañasConvert {
 
 	}
 
-	public CabañasModel EntityToModel(Cabanas cm) {
-		CabañasModel c = new CabañasModel();
-		c.setCodCabana(cm.getCodCabaña());
+	public CabanasModel EntityToModel(Cabanas cm) {
+		CabanasModel c = new CabanasModel();
+		c.setCodCabana(cm.getCodCabana());
 		c.setNombre(cm.getNombre());
 		c.setPrecio(cm.getPrecio());
 		c.setDisponible(cm.isDisponible());

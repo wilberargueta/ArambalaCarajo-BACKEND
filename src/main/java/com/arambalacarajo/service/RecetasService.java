@@ -63,5 +63,11 @@ public class RecetasService {
 
 		return evc.EntityToModel(evr.findRecetaByIdReceta(id));
 	}
+	public List<RecetasModel> findRecetasByName(String nombre) {
+		List<RecetasModel> lcpm = new ArrayList<>();
+		evr.findRecetasByNombreStartingWith(nombre).forEach(e -> lcpm.add(evc.EntityToModel(e)));
+		
+		return lcpm;
+	}
 
 }

@@ -38,12 +38,12 @@ public class Cabanas {
 		this.detalle = detalle;
 	}
 
-	public char[] getCodCabaña() {
+	public char[] getCodCabana() {
 		return codCabana;
 	}
 
-	public void setCodCabaña(char[] codCabaña) {
-		this.codCabana = codCabaña;
+	public void setCodCabana(char[] codCabana) {
+		this.codCabana = codCabana;
 	}
 
 	public String getNombre() {

@@ -9,20 +9,21 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-
-import com.arambalacarajo.entity.MenuRecetas;
+import com.arambalacarajo.entity.MenuCabana;
 import com.arambalacarajo.entity.Menus;
 
-@Repository("menuRecetasRepository")
-public interface MenuRecetasRepository extends JpaRepository<MenuRecetas, Integer> {
 
-	public MenuRecetas findMenuRecetaByIdMenuReceta(int idMenuReceta);
+@Repository("menuCabanaRepository")
+public interface MenuCabanaRepository extends JpaRepository<MenuCabana, Integer> {
 
-	public List<MenuRecetas> findMenuRecetaByMenu(Menus menu);
+	public MenuCabana findMenuCabanaByIdCabanaMenu(int idCabanaMenu);
+	public List<MenuCabana> findMenuCabañaByMenu(Menus menu);
 	
 	@Transactional
 	@Modifying
-	@Query("DELETE FROM MenuRecetas mr WHERE mr.menu = :menu")
-	public void deleteMenuRecetaBymenu(Menus menu);
+	@Query("DELETE FROM MenuCabana mc WHERE mc.menu = :menu")
+	public void deleteMenuCabanaByMenu(Menus menu);
+	
+
 
 }

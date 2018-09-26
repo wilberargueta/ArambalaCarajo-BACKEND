@@ -2,11 +2,11 @@ package com.arambalacarajo.model;
 
 import java.time.LocalDate;
 
-public class MenuCabañaModel {
+public class MenuCabanaModel {
 
-	private int idCabañaMenu;
+	private int idCabanaMenu;
 
-	private CabañasModel cabaña;
+	private CabanasModel cabana;
 
 	private MenusModel menu;
 
@@ -14,33 +14,33 @@ public class MenuCabañaModel {
 
 	private LocalDate fechaFinal;
 
-	public MenuCabañaModel() {
+	public MenuCabanaModel() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MenuCabañaModel(int idCabañaMenu, CabañasModel cabaña, MenusModel menu, LocalDate fechaInicio,
+	public MenuCabanaModel(int idCabanaMenu, CabanasModel cabana, MenusModel menu, LocalDate fechaInicio,
 			LocalDate fechaFinal) {
-		this.idCabañaMenu = idCabañaMenu;
-		this.cabaña = cabaña;
+		this.idCabanaMenu = idCabanaMenu;
+		this.cabana = cabana;
 		this.menu = menu;
 		this.fechaInicio = fechaInicio;
 		this.fechaFinal = fechaFinal;
 	}
 
-	public int getIdCabañaMenu() {
-		return idCabañaMenu;
+	public int getIdCabanaMenu() {
+		return idCabanaMenu;
 	}
 
-	public void setIdCabañaMenu(int idCabañaMenu) {
-		this.idCabañaMenu = idCabañaMenu;
+	public void setIdCabanaMenu(int idCabanaMenu) {
+		this.idCabanaMenu = idCabanaMenu;
 	}
 
-	public CabañasModel getCabaña() {
-		return cabaña;
+	public CabanasModel getCabana() {
+		return cabana;
 	}
 
-	public void setCabaña(CabañasModel cabaña) {
-		this.cabaña = cabaña;
+	public void setCabana(CabanasModel cabana) {
+		this.cabana = cabana;
 	}
 
 	public MenusModel getMenu() {
@@ -69,7 +69,7 @@ public class MenuCabañaModel {
 
 	@Override
 	public String toString() {
-		return "MenuCabaña [idCabañaMenu=" + idCabañaMenu + ", cabaña=" + cabaña + ", menu=" + menu + ", fechaInicio="
+		return "MenuCabana [idCabanaMenu=" + idCabanaMenu + ", cabana=" + cabana + ", menu=" + menu + ", fechaInicio="
 				+ fechaInicio + ", fechaFinal=" + fechaFinal + "]";
 	}
 

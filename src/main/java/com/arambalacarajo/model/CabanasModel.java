@@ -2,7 +2,7 @@ package com.arambalacarajo.model;
 
 import java.util.Arrays;
 
-public class CabañasModel {
+public class CabanasModel {
 
 	private char[] codCabana;
 
@@ -14,11 +14,11 @@ public class CabañasModel {
 	//
 	private String detalle;
 
-	public CabañasModel() {
+	public CabanasModel() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CabañasModel(char[] codCabana, String nombre, String precio, boolean disponible, String detalle) {
+	public CabanasModel(char[] codCabana, String nombre, String precio, boolean disponible, String detalle) {
 		this.codCabana = codCabana;
 		this.nombre = nombre;
 		this.precio = precio;

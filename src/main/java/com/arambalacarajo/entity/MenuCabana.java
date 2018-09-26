@@ -11,17 +11,17 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "menu_cabaña")
-public class MenuCabaña {
+@Table(name = "menu_cabana")
+public class MenuCabana {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id_cabaña_menu")
-	private int idCabañaMenu;
+	@Column(name = "id_cabana_menu")
+	private int idCabanaMenu;
 
 	@OneToOne
-	@JoinColumn(name = "cod_cabaña")
-	private Cabanas cabaña;
+	@JoinColumn(name = "cod_cabana")
+	private Cabanas cabana;
 
 	@OneToOne
 	@JoinColumn(name = "id_menu")
@@ -33,32 +33,32 @@ public class MenuCabaña {
 	@Column(name = "fecha_final")
 	private LocalDate fechaFinal;
 
-	public MenuCabaña() {
+	public MenuCabana() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public MenuCabaña(int idCabañaMenu, Cabanas cabaña, Menus menu, LocalDate fechaInicio, LocalDate fechaFinal) {
-		this.idCabañaMenu = idCabañaMenu;
-		this.cabaña = cabaña;
+	public MenuCabana(int idCabanaMenu, Cabanas cabana, Menus menu, LocalDate fechaInicio, LocalDate fechaFinal) {
+		this.idCabanaMenu = idCabanaMenu;
+		this.cabana = cabana;
 		this.menu = menu;
 		this.fechaInicio = fechaInicio;
 		this.fechaFinal = fechaFinal;
 	}
 
-	public int getIdCabañaMenu() {
-		return idCabañaMenu;
+	public int getIdCabanaMenu() {
+		return idCabanaMenu;
 	}
 
-	public void setIdCabañaMenu(int idCabañaMenu) {
-		this.idCabañaMenu = idCabañaMenu;
+	public void setIdCabanaMenu(int idCabanaMenu) {
+		this.idCabanaMenu = idCabanaMenu;
 	}
 
-	public Cabanas getCabaña() {
-		return cabaña;
+	public Cabanas getCabana() {
+		return cabana;
 	}
 
-	public void setCabaña(Cabanas cabaña) {
-		this.cabaña = cabaña;
+	public void setCabana(Cabanas cabana) {
+		this.cabana = cabana;
 	}
 
 	public Menus getMenu() {
@@ -87,7 +87,7 @@ public class MenuCabaña {
 
 	@Override
 	public String toString() {
-		return "MenuCabaña [idCabañaMenu=" + idCabañaMenu + ", cabaña=" + cabaña + ", menu=" + menu + ", fechaInicio="
+		return "MenuCabaña [idCabanaMenu=" + idCabanaMenu + ", cabana=" + cabana + ", menu=" + menu + ", fechaInicio="
 				+ fechaInicio + ", fechaFinal=" + fechaFinal + "]";
 	}
 

@@ -11,51 +11,57 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.arambalacarajo.model.CabañasModel;
+import com.arambalacarajo.model.CabanasModel;
 import com.arambalacarajo.model.Message;
-import com.arambalacarajo.service.CabañasService;
+import com.arambalacarajo.service.CabanasService;
 
 @RestController
-public class CabañasController {
+public class CabanasController {
 
 	@Autowired
-	@Qualifier("cabañasService")
-	private CabañasService cs;
+	@Qualifier("cabanasService")
+	private CabanasService cs;
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/cabanas", method = RequestMethod.GET)
-	public List<CabañasModel> listaCabañas() {
+	public List<CabanasModel> listaCabañas() {
 
 		return cs.listaCabaña();
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/cabanas/{cod}", method = RequestMethod.GET)
-	public CabañasModel byCod(@PathVariable String cod) {
+	public CabanasModel byCod(@PathVariable String cod) {
 
-		return cs.findCompraByCod(cod);
+		return cs.findCabañaByCod(cod);
+	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(path = "/api/cabanas/busqueda/{nombre}", method = RequestMethod.GET)
+	public List<CabanasModel> byNombre(@PathVariable String nombre) {
+
+		return cs.listaCabañaByNombre(nombre);
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/cabanas", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody CabañasModel cm) {
+	public CabanasModel nuevo(@RequestBody CabanasModel cm) {
 
 		return cs.addCabaña(cm);
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/cabanas", method = RequestMethod.PUT)
-	public Message update(@RequestBody CabañasModel cm) {
+	public Message update(@RequestBody CabanasModel cm) {
 
 		return cs.updateCabaña(cm);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/cabanas/{cod}", method = RequestMethod.DELETE)
-	public Message delete(@PathVariable String cod) {
-		CabañasModel cm = new CabañasModel();
-		cm.setCodCabana(cod.toCharArray());
-		return cs.deleteCabaña(cm);
+	@RequestMapping(path = "/api/cabanas/delete", method = RequestMethod.PUT)
+	public Message delete(@RequestBody CabanasModel c) {
+
+		return cs.deleteCabaña(c);
 	}
 	
 	

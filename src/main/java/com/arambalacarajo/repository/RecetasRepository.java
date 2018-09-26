@@ -1,6 +1,9 @@
 package com.arambalacarajo.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import com.arambalacarajo.entity.Recetas;
 
@@ -8,5 +11,7 @@ import com.arambalacarajo.entity.Recetas;
 public interface RecetasRepository extends JpaRepository<Recetas, Integer> {
 	
 	public Recetas findRecetaByIdReceta(int idReceta);
-
+	
+	@Query("SELECT r FROM Recetas r WHERE r.nombre LIKE  CONCAT('%',:nombre,'%')")
+	public List<Recetas> findRecetasByNombreStartingWith(String nombre);
 }

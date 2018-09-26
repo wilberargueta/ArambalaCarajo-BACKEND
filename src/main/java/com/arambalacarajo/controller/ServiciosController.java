@@ -35,6 +35,12 @@ public class ServiciosController {
 
 		return ss.findServiciosById(id);
 	}
+	@CrossOrigin(origins="*")
+	@RequestMapping(path = "/api/servicios/busqueda/{nombre}", method = RequestMethod.GET)
+	public List<ServiciosModel> listaByName(@PathVariable String nombre) {
+
+		return ss.listaServiciosByNombre(nombre);
+	}
 	
 	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios", method = RequestMethod.POST)

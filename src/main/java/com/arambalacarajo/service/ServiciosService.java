@@ -55,6 +55,14 @@ public class ServiciosService {
 
 		return lcpm;
 	}
+	public List<ServiciosModel> listaServiciosByNombre(String nombre) {
+
+		List<ServiciosModel> lcpm = new ArrayList<>();
+		cr.findServiciosByNombreStartingWith(nombre).forEach(c -> lcpm.add(cc.EntityToModel(c)));
+
+		return lcpm;
+	}
+
 
 	public ServiciosModel findServiciosById(int id) {
 
