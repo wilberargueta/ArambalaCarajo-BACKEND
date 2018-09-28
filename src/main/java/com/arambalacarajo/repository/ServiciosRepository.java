@@ -13,7 +13,7 @@ public interface ServiciosRepository extends JpaRepository<Servicios, Integer> {
 
 	public Servicios findServicioByIdServicio(int idServicio);
 	
-	@Query("SELECT s FROM Servicios s WHERE s.nombre LIKE  CONCAT('%',:nombre,'%')")
-	public List<Servicios> findServiciosByNombreStartingWith(String nombre);
+	//@Query("SELECT s FROM Servicios s WHERE s.nombre LIKE  CONCAT('%',:nombre,'%')")
+	public List<Servicios> findServiciosByNombreContaining(String nombre);
 
 }

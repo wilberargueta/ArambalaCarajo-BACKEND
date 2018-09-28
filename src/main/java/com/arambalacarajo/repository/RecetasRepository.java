@@ -12,6 +12,6 @@ public interface RecetasRepository extends JpaRepository<Recetas, Integer> {
 	
 	public Recetas findRecetaByIdReceta(int idReceta);
 	
-	@Query("SELECT r FROM Recetas r WHERE r.nombre LIKE  CONCAT('%',:nombre,'%')")
-	public List<Recetas> findRecetasByNombreStartingWith(String nombre);
+	//@Query("SELECT r FROM Recetas r WHERE r.nombre LIKE  CONCAT('%',:nombre,'%')")
+	public List<Recetas> findRecetasByNombreContaining(String nombre);
 }

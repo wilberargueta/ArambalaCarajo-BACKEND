@@ -60,7 +60,7 @@ public class CategoriaMenuController {
 	@CrossOrigin("*")
 	@RequestMapping(path="/api/categoriaMenu/busqueda/{categoriaMenu}", method = RequestMethod.GET)
 	public List<CategoriaMenu> getCategoriaMenuBySearch(@PathVariable String categoriaMenu) {
-		return categoriaMenuRepository.findCategoriaMenuByCategoriaStartingWith(categoriaMenu);
+		return categoriaMenuRepository.findCategoriaMenuByCategoriaMenuContaining(categoriaMenu);
 	}
 	
 	

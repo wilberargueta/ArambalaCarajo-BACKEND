@@ -65,7 +65,7 @@ public class ProductosService {
 	public List<ProductosModel> listaProductosByNombre(String nombre) {
 
 		List<ProductosModel> lcpm = new ArrayList<>();
-		evr.findProductosByNombreStartingWith(nombre).forEach(e -> lcpm.add(evc.EntityToModel(e)));
+		evr.findProductosByNombreContaining(nombre).forEach(e -> lcpm.add(evc.EntityToModel(e)));
 
 		return lcpm;
 	}

@@ -12,6 +12,6 @@ import com.arambalacarajo.entity.CategoriaMenu;
 @Repository("categoriaMenuRepository")
 public interface CategoriaMenuRepository extends JpaRepository<CategoriaMenu, Integer> {
 	public CategoriaMenu findCategoriaMenuByIdCategoriaMenu(int id);
-	@Query("SELECT cm FROM CategoriaMenu cm WHERE cm.categoriaMenu LIKE  CONCAT('%',:categoriaMenu,'%')")
-	public List<CategoriaMenu> findCategoriaMenuByCategoriaStartingWith(String categoriaMenu);
+	//@Query("SELECT cm FROM CategoriaMenu cm WHERE cm.categoriaMenu LIKE  CONCAT('%',:categoriaMenu,'%')")
+	public List<CategoriaMenu> findCategoriaMenuByCategoriaMenuContaining(String categoriaMenu);
 }

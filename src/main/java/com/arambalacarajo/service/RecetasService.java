@@ -65,7 +65,7 @@ public class RecetasService {
 	}
 	public List<RecetasModel> findRecetasByName(String nombre) {
 		List<RecetasModel> lcpm = new ArrayList<>();
-		evr.findRecetasByNombreStartingWith(nombre).forEach(e -> lcpm.add(evc.EntityToModel(e)));
+		evr.findRecetasByNombreContaining(nombre).forEach(e -> lcpm.add(evc.EntityToModel(e)));
 		
 		return lcpm;
 	}

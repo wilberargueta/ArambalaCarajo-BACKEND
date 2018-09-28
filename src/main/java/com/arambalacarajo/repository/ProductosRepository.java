@@ -12,7 +12,7 @@ import com.arambalacarajo.entity.Productos;
 public interface ProductosRepository extends JpaRepository<Productos, Character> {
 	
 	public Productos findProductosByCodProducto(char[] codProducto);
-	@Query("SELECT p FROM Productos p WHERE p.nombre LIKE  CONCAT('%',:nombre,'%')")
-	public List<Productos> findProductosByNombreStartingWith(String nombre);
+	//@Query("SELECT p FROM Productos p WHERE p.nombre LIKE  CONCAT('%',:nombre,'%')")
+	public List<Productos> findProductosByNombreContaining(String nombre);
 
 }

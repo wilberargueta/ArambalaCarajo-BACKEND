@@ -9,5 +9,5 @@ import com.arambalacarajo.entity.Proveedores;
 @Repository("proveedoresRepository")
 public interface ProveedoresRepository extends JpaRepository<Proveedores, Character> {
 	public Proveedores findProveedoresByCodProveedor(char[] codProveedor);
-	public List<Proveedores> findProveedoresByRazonSocialStartingWith(String prefix);
+	public List<Proveedores> findProveedoresByRazonSocialContaining(String prefix);
 }

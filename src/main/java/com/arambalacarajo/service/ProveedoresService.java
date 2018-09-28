@@ -61,7 +61,7 @@ public class ProveedoresService {
 	public List<ProveedoresModel> listaProveedoresByPrefix(String prefix) {
 
 		List<ProveedoresModel> lcpm = new ArrayList<>();
-		evr.findProveedoresByRazonSocialStartingWith(prefix).forEach(e -> lcpm.add(evc.EntityToModel(e)));
+		evr.findProveedoresByRazonSocialContaining(prefix).forEach(e -> lcpm.add(evc.EntityToModel(e)));
 
 		return lcpm;
 	}

@@ -58,7 +58,7 @@ public class ServiciosService {
 	public List<ServiciosModel> listaServiciosByNombre(String nombre) {
 
 		List<ServiciosModel> lcpm = new ArrayList<>();
-		cr.findServiciosByNombreStartingWith(nombre).forEach(c -> lcpm.add(cc.EntityToModel(c)));
+		cr.findServiciosByNombreContaining(nombre).forEach(c -> lcpm.add(cc.EntityToModel(c)));
 
 		return lcpm;
 	}

@@ -13,7 +13,7 @@ public interface CabanasRepository extends JpaRepository<Cabanas, Character> {
 
 	public Cabanas findCabañaByCodCabana(char[] codCabana);
 	
-	@Query("SELECT c FROM Cabanas c WHERE c.nombre LIKE  CONCAT('%',:nombre,'%')")
-	public List<Cabanas> findCabanasByNombreStartingWith(String nombre);
+	//@Query("SELECT c FROM Cabanas c WHERE c.nombre LIKE  CONCAT('%',:nombre,'%')")
+	public List<Cabanas> findCabanasByNombreContaining(String nombre);
 
 }

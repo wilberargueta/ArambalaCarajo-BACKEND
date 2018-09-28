@@ -57,6 +57,14 @@ public class EmpleadosService {
 		return lcpm;
 	}
 
+	public List<EmpleadosModel> listaEmpleadosByNombre(String nombre) {
+
+		List<EmpleadosModel> lcpm = new ArrayList<>();
+		er.findEmpleadoByNombreContaining(nombre).forEach(e -> lcpm.add(ec.EntityToModel(e)));
+
+		return lcpm;
+	}
+
 	public EmpleadosModel findEmpleadoByCod(char[] cod) {
 
 		return ec.EntityToModel(er.findEmpleadoByCodEmpleado(cod));

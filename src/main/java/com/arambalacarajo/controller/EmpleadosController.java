@@ -52,9 +52,15 @@ public class EmpleadosController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/empleados", method = RequestMethod.GET)
 	public List<EmpleadosModel> lista() {
-		LOGGER.info("Hola");
 		return cps.listaEmpleados();
 	}
+	
+	@CrossOrigin(origins = "*")
+	@RequestMapping(path = "/api/empleados/nombre/{nombre}", method = RequestMethod.GET)
+	public List<EmpleadosModel> listaByNombre(@PathVariable String nombre) {
+		return cps.listaEmpleadosByNombre(nombre);
+	}
+	
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/empleados/{cod}", method = RequestMethod.GET)

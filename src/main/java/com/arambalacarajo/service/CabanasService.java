@@ -59,7 +59,7 @@ public class CabanasService {
 	public List<CabanasModel> listaCabañaByNombre(String nombre) {
 
 		List<CabanasModel> lcpm = new ArrayList<>();
-		cr.findCabanasByNombreStartingWith(nombre).forEach(c -> lcpm.add(cc.EntityToModel(c)));
+		cr.findCabanasByNombreContaining(nombre).forEach(c -> lcpm.add(cc.EntityToModel(c)));
 
 		return lcpm;
 	}
