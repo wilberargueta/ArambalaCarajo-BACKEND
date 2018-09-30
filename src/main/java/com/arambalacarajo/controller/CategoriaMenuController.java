@@ -31,12 +31,12 @@ public class CategoriaMenuController {
 	}
 	
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/categoriaMenu", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/categoriaMenu/update", method = RequestMethod.POST)
 	public CategoriaMenu updateCategoriaMenu(@RequestBody CategoriaMenu cm) {
 		return categoriaMenuRepository.saveAndFlush(cm);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/categoriaMenu/delete", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/categoriaMenu/delete", method = RequestMethod.POST)
 	public Message deleteCategoriaMenu(@RequestBody CategoriaMenu cm) {
 		Message m = new Message();
 		categoriaMenuRepository.delete(cm);

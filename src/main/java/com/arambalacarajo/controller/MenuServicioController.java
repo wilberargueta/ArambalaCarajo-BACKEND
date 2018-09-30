@@ -44,28 +44,28 @@ public class MenuServicioController {
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menuServicio", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuServicio/update", method = RequestMethod.POST)
 	public Message update(@RequestBody MenuServicioModel cm) {
 
 		return ms.updateMenuServicio(cm);
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menuServicio/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuServicio/delete", method = RequestMethod.POST)
 	public Message delete(@RequestBody MenuServicioModel cm) {
 
 		return ms.deleteMenuServicio(cm);
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menuServicio/menu", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuServicio/menu", method = RequestMethod.POST)
 	public List<MenuServicioModel> byMenu(@RequestBody MenusModel mm) {
 
 		return ms.listaByMenu(mm);
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menuServicio/delete/menu", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuServicio/delete/menu", method = RequestMethod.POST)
 	public Message deleteByMenu(@RequestBody MenusModel cm) {
 
 		return ms.deleteMenuServicioByMenu(cm);

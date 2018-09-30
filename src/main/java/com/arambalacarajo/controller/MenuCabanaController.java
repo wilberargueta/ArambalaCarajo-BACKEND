@@ -29,7 +29,7 @@ public class MenuCabanaController {
 		return ms.listaMenuCabaña();
 	}
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCabana/menu", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCabana/menu", method = RequestMethod.POST)
 	public List<MenuCabanaModel> listByMenu(@RequestBody MenusModel mm) {
 		return ms.listaMenuCabañaByMenu(mm);
 	}
@@ -47,19 +47,19 @@ public class MenuCabanaController {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCabana", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCabana/update", method = RequestMethod.POST)
 	public Message update(@RequestBody MenuCabanaModel mm) {
 		return ms.updateMenuCabaña(mm);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCabana/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCabana/delete", method = RequestMethod.POST)
 	public Message delete(@RequestBody MenuCabanaModel mm) {
 		return ms.deleteMenuCabaña(mm);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCabana/delete/menu", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCabana/delete/menu", method = RequestMethod.POST)
 	public Message delete(@RequestBody MenusModel mm) {
 		return ms.deleteMenuCabañaByMenu(mm);
 	}

@@ -38,7 +38,7 @@ public class UsuarioEmpleadoController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/usuarioEmpleado", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/usuarioEmpleado/update", method = RequestMethod.POST)
 	public Message updateUsuarioEmpleado(@RequestBody UsuarioEmpleado ue) {
 		Message m = new Message(HttpStatus.OK, "Usuario Actualizado");
 		try {
@@ -53,7 +53,7 @@ public class UsuarioEmpleadoController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/usuarioEmpleado/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/usuarioEmpleado/delete", method = RequestMethod.POST)
 	public Message deleteUsuarioEmpleado(@RequestBody UsuarioEmpleado ue) {
 		uer.delete(ue);
 		Message m = new Message(HttpStatus.OK, "Usuario Eliminado");
@@ -68,14 +68,14 @@ public class UsuarioEmpleadoController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/usuarioEmpleado/usuario", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/usuarioEmpleado/usuario", method = RequestMethod.POST)
 	public UsuarioEmpleado getUsuarioEmpleadoByUsuario(@RequestBody Usuario u) {
 
 		return uer.findUsuarioEmpleadoByUsuario(u);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/usuarioEmpleado/empleados", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/usuarioEmpleado/empleados", method = RequestMethod.POST)
 	public UsuarioEmpleado getUsuarioEmpleadoByUsuario(@RequestBody Empleados e) {
 
 		return uer.findUsuarioEmpleadoByEmpleado(e);

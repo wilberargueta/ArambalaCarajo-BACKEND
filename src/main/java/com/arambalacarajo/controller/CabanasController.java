@@ -51,14 +51,14 @@ public class CabanasController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/cabanas", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/cabanas/update", method = RequestMethod.POST)
 	public Message update(@RequestBody CabanasModel cm) {
 
 		return cs.updateCabaña(cm);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/cabanas/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/cabanas/delete", method = RequestMethod.POST)
 	public Message delete(@RequestBody CabanasModel c) {
 
 		return cs.deleteCabaña(c);

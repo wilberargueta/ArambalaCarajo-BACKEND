@@ -32,7 +32,7 @@ public class MenuCategoriaController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCategoria", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCategoria/update", method = RequestMethod.POST)
 	public Message updateMenuCategoria(@RequestBody MenuCategoria mc) {
 		mcr.save(mc);
 		Message m = new Message();
@@ -42,7 +42,7 @@ public class MenuCategoriaController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCategoria/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCategoria/delete", method = RequestMethod.POST)
 	public Message deleteMenuCategoria(@RequestBody MenuCategoria mc) {
 		mcr.delete(mc);
 		Message m = new Message();
@@ -59,7 +59,7 @@ public class MenuCategoriaController {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/menuCategoria/busqueda/categoria", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuCategoria/busqueda/categoria", method = RequestMethod.POST)
 	public List<MenuCategoria> getMenuCategoriaByCategoria(@RequestBody Categoria categoria) {
 
 		return mcr.findMenuCategoriaByCategoria(categoria);

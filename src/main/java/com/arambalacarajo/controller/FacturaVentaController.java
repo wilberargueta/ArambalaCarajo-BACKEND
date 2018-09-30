@@ -28,13 +28,13 @@ public class FacturaVentaController {
 		return cps.addFacturaVenta(cp);
 	}
 
-	@RequestMapping(path = "/api/facturaVenta", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/facturaVenta/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody FacturaVentaModel cp) {
 
 		return cps.updateFacturaVenta(cp);
 	}
 
-	@RequestMapping(path = "/api/facturaVenta", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/facturaVenta/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody FacturaVentaModel cp) {
 
 		return cps.deleteFacturaVenta(cp);

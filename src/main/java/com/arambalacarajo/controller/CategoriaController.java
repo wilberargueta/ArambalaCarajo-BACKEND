@@ -32,7 +32,7 @@ public class CategoriaController {
 	
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path="/api/categoria", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/categoria/update", method = RequestMethod.POST)
 	public Message updateCategoria(@RequestBody Categoria categoria) {
 		cr.save(categoria);
 		Message m = new Message();
@@ -42,7 +42,7 @@ public class CategoriaController {
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path="/api/categoria/delete", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/categoria/delete", method = RequestMethod.POST)
 	public Message deleteCategoria(@RequestBody Categoria categoria) {
 		cr.delete(categoria);
 		Message m = new Message();

@@ -33,7 +33,7 @@ public class UsuarioRoleController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/usuarioRole", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/usuarioRole/update", method = RequestMethod.POST)
 	public Message updateUsuarioRole(@RequestBody UsuarioRole ur) {
 		urr.save(ur);
 		Message m = new Message(HttpStatus.OK, "UsuarioRole Actualizado");
@@ -41,7 +41,7 @@ public class UsuarioRoleController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/usuarioRole/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/usuarioRole/delete", method = RequestMethod.POST)
 	public Message deleteUsuarioRole(@RequestBody UsuarioRole ur) {
 		urr.delete(ur);
 		Message m = new Message(HttpStatus.OK, "UsuarioRole Eliminado");

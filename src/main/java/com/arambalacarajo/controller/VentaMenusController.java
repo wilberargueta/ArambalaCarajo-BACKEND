@@ -28,13 +28,13 @@ public class VentaMenusController {
 		return cps.addVentaMenus(cp);
 	}
 
-	@RequestMapping(path = "/api/ventaMenus", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/ventaMenus/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody VentaMenusModel cp) {
 
 		return cps.updateVentaMenus(cp);
 	}
 
-	@RequestMapping(path = "/api/ventaMenus", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/ventaMenus/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody VentaMenusModel cp) {
 
 		return cps.deleteVentaMenus(cp);

@@ -31,20 +31,20 @@ public class MenuRecetasController {
 	}
 	
 	@CrossOrigin("*")
-	@RequestMapping(path = "/api/menuRecetas", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuRecetas/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody MenuRecetasModel cp) {
 
 		return cps.updateMenuRecetas(cp);
 	}
 	
 	@CrossOrigin("*")
-	@RequestMapping(path = "/api/menuRecetas/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuRecetas/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody MenuRecetasModel cp) {
 
 		return cps.deleteMenuRecetas(cp);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path = "/api/menuRecetas/delete/menu", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menuRecetas/delete/menu", method = RequestMethod.POST)
 	public Message eliminarByMenu(@RequestBody MenusModel mm) {
 
 		return cps.deleteMenuRecetasByMenu(mm);

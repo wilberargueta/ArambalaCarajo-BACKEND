@@ -31,20 +31,20 @@ public class CompraProductosController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/compraProducto", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/compraProducto/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody CompraProductosModel cp) {
 
 		return cps.updateCompraProducto(cp);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/compraProducto", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/compraProducto/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody CompraProductosModel cp) {
 		
 		return cps.deleteCompraProducto(cp);
 	}
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/compraProducto/delete", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/compraProducto/delete/compra", method = RequestMethod.POST)
 	public Message eliminarByCompra(@RequestBody ComprasModel cp) {
 		
 		return cps.deleteCompraProductoByCompra(cp);

@@ -50,14 +50,14 @@ public class ServiciosController {
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/servicios", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/servicios/update", method = RequestMethod.POST)
 	public Message update(@RequestBody ServiciosModel sm) {
 
 		return ss.updateServicios(sm);
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/servicios/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/servicios/delete", method = RequestMethod.POST)
 	public Message delete(@RequestBody ServiciosModel sm) {
 
 		return ss.deleteServicios(sm);

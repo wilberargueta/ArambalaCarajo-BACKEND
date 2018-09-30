@@ -35,14 +35,14 @@ public class ComprasController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/compras", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/compras/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody ComprasModel cp) {
 
 		return cps.updateCompra(cp);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/compras", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/compras/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody ComprasModel cp) {
 
 		return cps.deleteCompra(cp);

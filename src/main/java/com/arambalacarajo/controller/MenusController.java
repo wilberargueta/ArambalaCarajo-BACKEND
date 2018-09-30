@@ -33,14 +33,14 @@ public class MenusController {
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menus", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menus/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody MenusModel cp) {
 
 		return cps.updateMenus(cp);
 	}
 	
 	@CrossOrigin(origins="*")
-	@RequestMapping(path = "/api/menus/delete", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/menus/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody MenusModel cp) {
 
 		return cps.deleteMenus(cp);

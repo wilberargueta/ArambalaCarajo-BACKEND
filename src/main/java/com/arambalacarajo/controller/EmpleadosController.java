@@ -36,14 +36,14 @@ public class EmpleadosController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/empleados", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/empleados/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody EmpleadosModel cp) {
 		
 		return cps.updateEmpleado(cp);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/empleados", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/empleados/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody EmpleadosModel cp) {
 
 		return cps.deleteEmpleado(cp);

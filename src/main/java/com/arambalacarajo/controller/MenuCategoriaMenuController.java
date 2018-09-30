@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,12 +30,12 @@ public class MenuCategoriaMenuController {
 	}
 	
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/menuCategoriaMenu", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/menuCategoriaMenu/update", method = RequestMethod.POST)
 	public MenuCategoriaMenu updateMenuCategoriaMenu(@RequestBody MenuCategoriaMenu cm) {
 		return menuCategoriaMenuRepository.saveAndFlush(cm);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/menuCategoriaMenu/delete", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/menuCategoriaMenu/delete", method = RequestMethod.POST)
 	public Message deleteMenuCategoriaMenu(@RequestBody MenuCategoriaMenu cm) {
 		Message m = new Message();
 		menuCategoriaMenuRepository.delete(cm);

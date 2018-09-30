@@ -32,14 +32,14 @@ public class ProveedoresController {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/proveedores", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/proveedores/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody ProveedoresModel cp) {
 		cp.setActualizado(LocalDate.now());
 		return cps.updateProveedores(cp);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/proveedores", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/proveedores/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody ProveedoresModel cp) {
 
 		return cps.deleteProveedores(cp);

@@ -3,6 +3,7 @@ package com.arambalacarajo.service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -35,11 +36,13 @@ public class LoginServiceImp implements UserDetailsService {
 	@Qualifier("usuarioEmpleadoRepository")
 	private UsuarioEmpleadoRepository ue;
 
+
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+
 		Usuario user = ur.findFirstUsuarioByNickContaining(username);
 		UsuarioRole role = urr.findUsuarioRoleByUsuario(user);
-
 		return this.userBuilder(user.getNick(), user.getPass(), role.getRole().getRole());
 	}
 
@@ -50,8 +53,8 @@ public class LoginServiceImp implements UserDetailsService {
 		boolean credentialNonExpired = true;
 		boolean accountNonLocked = true;
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
-		return new User(username,new BCryptPasswordEncoder().encode(password), enable, accountNonExpired,
+		authorities.add(new SimpleGrantedAuthority(role));
+		return new User(username, password, enable, accountNonExpired,
 				credentialNonExpired, accountNonLocked, authorities);
 	}
 

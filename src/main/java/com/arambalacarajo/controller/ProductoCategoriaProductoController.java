@@ -28,12 +28,12 @@ public class ProductoCategoriaProductoController {
 	}
 	
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/productoCategoriaProducto", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/productoCategoriaProducto/update", method = RequestMethod.POST)
 	public ProductoCategoriaProducto updateProductoCategoriaProducto(@RequestBody ProductoCategoriaProducto cm) {
 		return productoCategoriaProductoRepository.saveAndFlush(cm);
 	}
 	@CrossOrigin("*")
-	@RequestMapping(path="/api/productoCategoriaProducto/delete", method = RequestMethod.PUT)
+	@RequestMapping(path="/api/productoCategoriaProducto/delete", method = RequestMethod.POST)
 	public Message deleteProductoCategoriaProducto(@RequestBody ProductoCategoriaProducto cm) {
 		Message m = new Message();
 		productoCategoriaProductoRepository.delete(cm);

@@ -30,14 +30,14 @@ public class RecetasController {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/recetas", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/recetas/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody RecetasModel cp) {
 
 		return cps.updateRecetas(cp);
 	}
 	
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/recetas", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/recetas/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody RecetasModel cp) {
 
 		return cps.deleteRecetas(cp);

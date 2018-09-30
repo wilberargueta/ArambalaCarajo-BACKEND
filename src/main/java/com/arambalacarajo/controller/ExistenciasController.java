@@ -31,14 +31,14 @@ public class ExistenciasController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/existencias", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/existencias/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody ExistenciasModel cp) {
 
 		return cps.updateExistencias(cp);
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/existencias", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/existencias/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody ExistenciasModel cp) {
 
 		return cps.deleteExistencias(cp);

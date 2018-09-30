@@ -27,13 +27,13 @@ public class VentasController {
 		return cps.addVentas(cp);
 	}
 
-	@RequestMapping(path = "/api/ventas", method = RequestMethod.PUT)
+	@RequestMapping(path = "/api/ventas/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody VentasModel cp) {
 
 		return cps.updateVentas(cp);
 	}
 
-	@RequestMapping(path = "/api/ventas", method = RequestMethod.DELETE)
+	@RequestMapping(path = "/api/ventas/delete", method = RequestMethod.POST)
 	public Message eliminar(@RequestBody VentasModel cp) {
 
 		return cps.deleteVentas(cp);
