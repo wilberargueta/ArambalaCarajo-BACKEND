@@ -32,12 +32,9 @@ public class ComprasService {
 
 	private Message m;
 
-	public Message addCompra(ComprasModel cm) {
-		m = new Message();
-		cr.save(cc.ModelToEntity(cm));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Compra Agregado Correctamente..");
-		return m;
+	public ComprasModel addCompra(ComprasModel cm) {
+		
+		return cc.EntityToModel(cr.save(cc.ModelToEntity(cm)));
 	}
 
 	public Message deleteCompra(ComprasModel cm) {
@@ -71,7 +68,7 @@ public class ComprasService {
 	
 	public ComprasModel findCompraByR(String reg) {
 
-		return cc.EntityToModel(cr.findCompraByRegistroCompra(reg.toCharArray()));
+		return cc.EntityToModel(cr.findCompraByRegistroCompra(reg));
 	}
 
 	public List<ComprasModel> listaByProveedor(ProveedoresModel em) {

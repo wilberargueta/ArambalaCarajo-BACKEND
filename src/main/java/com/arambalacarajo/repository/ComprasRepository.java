@@ -14,6 +14,6 @@ public interface ComprasRepository extends JpaRepository<Compras, Integer> {
 	
 	public Compras findCompraByIdCompra(int idCompra);
 	public List<Compras> findComprasByProveedor(Proveedores proveedor);
-	public Compras findCompraByRegistroCompra(char[] registro);
+	public Compras findCompraByRegistroCompra(String registro);
 
 }

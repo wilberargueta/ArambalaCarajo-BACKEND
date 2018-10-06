@@ -1,7 +1,6 @@
 package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,17 +13,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 @Entity
 @Table(name = "compras")
 public class Compras {
 
-	@Id
-	@Column(name = "id_compra")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_compra", nullable = true)
 	private int idCompra;
 
+	@Id
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "R"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "registro_compra", unique = true)
-	private char[] registroCompra;
+	private String registroCompra;
 
 	@Column(name = "fecha_compra")
 	private LocalDate fechaCompra;
@@ -43,7 +46,7 @@ public class Compras {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Compras(int idCompra, char[] registroCompra, LocalDate fechaCompra, String detalle, Proveedores proveedor) {
+	public Compras(int idCompra, String registroCompra, LocalDate fechaCompra, String detalle, Proveedores proveedor) {
 		this.idCompra = idCompra;
 		this.registroCompra = registroCompra;
 		this.fechaCompra = fechaCompra;
@@ -59,11 +62,11 @@ public class Compras {
 		this.idCompra = idCompra;
 	}
 
-	public char[] getRegistroCompra() {
+	public String getRegistroCompra() {
 		return registroCompra;
 	}
 
-	public void setRegistroCompra(char[] registroCompra) {
+	public void setRegistroCompra(String registroCompra) {
 		this.registroCompra = registroCompra;
 	}
 
@@ -93,8 +96,8 @@ public class Compras {
 
 	@Override
 	public String toString() {
-		return "Compras [idCompra=" + idCompra + ", registroCompra=" + Arrays.toString(registroCompra)
-				+ ", fechaCompra=" + fechaCompra + ", detalle=" + detalle + ", proveedor=" + proveedor + "]";
+		return "Compras [idCompra=" + idCompra + ", registroCompra=" + registroCompra + ", fechaCompra=" + fechaCompra
+				+ ", detalle=" + detalle + ", proveedor=" + proveedor + "]";
 	}
 
 }

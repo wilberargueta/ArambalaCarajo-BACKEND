@@ -20,7 +20,7 @@ public class CompraProductos {
 	private int idCompraProducto;
 
 	@ManyToOne
-	@JoinColumn(name = "id_compra")
+	@JoinColumn(name = "registro_compra")
 	private Compras compras;
 
 	@OneToOne

@@ -29,7 +29,7 @@ public class EmpleadosController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/empleados", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody EmpleadosModel cp) {
+	public EmpleadosModel nuevo(@RequestBody EmpleadosModel cp) {
 		cp.setCreado(LocalDate.now());
 		cp.setActualizado(LocalDate.now());
 		return cps.addEmpleado(cp);
@@ -66,7 +66,7 @@ public class EmpleadosController {
 	@RequestMapping(path = "/api/empleados/{cod}", method = RequestMethod.GET)
 	public EmpleadosModel byId(@PathVariable String cod) {
 
-		return cps.findEmpleadoByCod(cod.toCharArray());
+		return cps.findEmpleadoByCod(cod);
 	}
 
 }

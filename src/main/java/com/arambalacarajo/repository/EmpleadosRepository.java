@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 import com.arambalacarajo.entity.Empleados;
 
 @Repository("empleadosRepository")
-public interface EmpleadosRepository extends JpaRepository<Empleados, Character> {
+public interface EmpleadosRepository extends JpaRepository<Empleados, String> {
 
-	public Empleados findEmpleadoByCodEmpleado(char[] codEmpleado);
+	public Empleados findEmpleadoByCodEmpleado(String codEmpleado);
 	public List<Empleados> findEmpleadoByNombreContaining(String nombre);
 
 

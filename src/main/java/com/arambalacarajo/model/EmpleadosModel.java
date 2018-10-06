@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class EmpleadosModel {
 
-	private char[] codEmpleado;
+	private String codEmpleado;
 
 	private String nombre;
 
@@ -31,7 +31,7 @@ public class EmpleadosModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmpleadosModel(char[] codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
+	public EmpleadosModel(String codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
 			String direccion, String telefono) {
 		this.codEmpleado = codEmpleado;
 		this.nombre = nombre;
@@ -42,11 +42,11 @@ public class EmpleadosModel {
 		this.telefono = telefono;
 	}
 
-	public char[] getCodEmpleado() {
+	public String getCodEmpleado() {
 		return codEmpleado;
 	}
 
-	public void setCodEmpleado(char[] codEmpleado) {
+	public void setCodEmpleado(String  hacodEmpleado) {
 		this.codEmpleado = codEmpleado;
 	}
 
@@ -132,7 +132,7 @@ public class EmpleadosModel {
 
 	@Override
 	public String toString() {
-		return "Empleados [codEmpleado=" + Arrays.toString(codEmpleado) + ", nombre=" + nombre + ", apellido="
+		return "Empleados [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", apellido="
 				+ apellido + ", dui=" + dui + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
 				+ ", telefono=" + telefono + ", activo=" + activo + ", creado=" + creado + ", actualizado="
 				+ actualizado + ", eliminado=" + eliminado + "]";

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arambalacarajo.entity.CategoriaMenu;
 import com.arambalacarajo.entity.MenuCategoriaMenu;
 import com.arambalacarajo.entity.Menus;
 import com.arambalacarajo.model.Message;
@@ -54,6 +55,12 @@ public class MenuCategoriaMenuController {
 	@RequestMapping(path="/api/menuCategoriaMenu/menu", method = RequestMethod.POST)
 	public MenuCategoriaMenu categoriaMenuByMenu(@RequestBody Menus menu) {
 		return menuCategoriaMenuRepository.findMenuCategoriaMenuByMenu(menu);
+	}
+	
+	@CrossOrigin("*")
+	@RequestMapping(path="/api/menuCategoriaMenu/categoria", method = RequestMethod.POST)
+	public List<MenuCategoriaMenu> allMenuCategoriaMenuByCategoria(@RequestBody CategoriaMenu cm) {
+		return menuCategoriaMenuRepository.findMenuCategoriaMenuByCategoriaMenu(cm);
 	}
 	
 }

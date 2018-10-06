@@ -25,12 +25,10 @@ public class EmpleadosService {
 
 	private Message m;
 
-	public Message addEmpleado(EmpleadosModel em) {
-		m = new Message();
-		er.save(ec.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Empleado Agregado Correctamente..");
-		return m;
+	public EmpleadosModel addEmpleado(EmpleadosModel em) {
+
+		
+		return ec.EntityToModel(er.saveAndFlush(ec.ModelToEntity(em)));
 	}
 
 	public Message deleteEmpleado(EmpleadosModel em) {
@@ -65,7 +63,7 @@ public class EmpleadosService {
 		return lcpm;
 	}
 
-	public EmpleadosModel findEmpleadoByCod(char[] cod) {
+	public EmpleadosModel findEmpleadoByCod(String  cod) {
 
 		return ec.EntityToModel(er.findEmpleadoByCodEmpleado(cod));
 	}

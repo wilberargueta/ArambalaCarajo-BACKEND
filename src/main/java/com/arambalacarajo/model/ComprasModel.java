@@ -8,7 +8,7 @@ public class ComprasModel {
 
 	private int idCompra;
 
-	private char[] registroCompra;
+	private String registroCompra;
 
 	private LocalDate fechaCompra;
 
@@ -22,7 +22,7 @@ public class ComprasModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ComprasModel(int idCompra, char[] registroCompra, LocalDate fechaCompra, String detalle, ProveedoresModel proveedor) {
+	public ComprasModel(int idCompra,String registroCompra, LocalDate fechaCompra, String detalle, ProveedoresModel proveedor) {
 		this.idCompra = idCompra;
 		this.registroCompra = registroCompra;
 		this.fechaCompra = fechaCompra;
@@ -38,11 +38,11 @@ public class ComprasModel {
 		this.idCompra = idCompra;
 	}
 
-	public char[] getRegistroCompra() {
+	public String getRegistroCompra() {
 		return registroCompra;
 	}
 
-	public void setRegistroCompra(char[] registroCompra) {
+	public void setRegistroCompra(String registroCompra) {
 		this.registroCompra = registroCompra;
 	}
 
@@ -72,7 +72,7 @@ public class ComprasModel {
 
 	@Override
 	public String toString() {
-		return "Compras [idCompra=" + idCompra + ", registroCompra=" + Arrays.toString(registroCompra)
+		return "Compras [idCompra=" + idCompra + ", registroCompra=" + registroCompra
 				+ ", fechaCompra=" + fechaCompra + ", detalle=" + detalle + ", proveedor=" + proveedor
 				+ ", compraProducto=" + compraProducto + "]";
 	}

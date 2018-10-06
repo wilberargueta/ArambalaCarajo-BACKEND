@@ -5,16 +5,24 @@ import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "empleados")
 public class Empleados {
 
 	@Id
+    @GeneratedValue(generator = "prod-generator")
+    @GenericGenerator(name = "prod-generator", 
+      parameters = @Parameter(name = "prefix", value = "E"), 
+      strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "cod_empleado")
-	private char[] codEmpleado;
+	private String codEmpleado;
 
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
@@ -50,7 +58,7 @@ public class Empleados {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Empleados(char[] codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
+	public Empleados(String codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
 			String direccion, String telefono) {
 		this.codEmpleado = codEmpleado;
 		this.nombre = nombre;
@@ -61,11 +69,11 @@ public class Empleados {
 		this.telefono = telefono;
 	}
 
-	public char[] getCodEmpleado() {
+	public String getCodEmpleado() {
 		return codEmpleado;
 	}
 
-	public void setCodEmpleado(char[] codEmpleado) {
+	public void setCodEmpleado(String codEmpleado) {
 		this.codEmpleado = codEmpleado;
 	}
 
@@ -151,7 +159,7 @@ public class Empleados {
 
 	@Override
 	public String toString() {
-		return "Empleados [codEmpleado=" + Arrays.toString(codEmpleado) + ", nombre=" + nombre + ", apellido="
+		return "Empleados [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", apellido="
 				+ apellido + ", dui=" + dui + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
 				+ ", telefono=" + telefono + ", activo=" + activo + ", creado=" + creado + ", actualizado="
 				+ actualizado + ", eliminado=" + eliminado + "]";

@@ -2,8 +2,7 @@ package com.arambalacarajo.controller;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -29,7 +28,7 @@ public class ComprasController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/compras", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody ComprasModel cp) {
+	public ComprasModel nuevo(@RequestBody ComprasModel cp) {
 		
 		return cps.addCompra(cp);
 	}

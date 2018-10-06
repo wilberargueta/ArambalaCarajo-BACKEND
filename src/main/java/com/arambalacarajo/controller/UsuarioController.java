@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
@@ -19,6 +20,7 @@ import com.arambalacarajo.model.Message;
 import com.arambalacarajo.model.Respuesta;
 import com.arambalacarajo.repository.UsuarioRepository;
 
+@PreAuthorize("hasRole('Administrador')")
 @RestController
 public class UsuarioController {
 	@Autowired
