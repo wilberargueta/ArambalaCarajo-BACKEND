@@ -1,20 +1,26 @@
 package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "proveedores")
 public class Proveedores {
 
 	@Id
+    @GeneratedValue(generator = "prod-generator")
+    @GenericGenerator(name = "prod-generator", 
+      parameters = @Parameter(name = "prefix", value = "P"), 
+      strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "cod_proveedor")
-	private char[] codProveedor;
+	private String codProveedor;
 
 	@Column(name = "razon_social", nullable = false)
 	private String razonSocial;
@@ -44,10 +50,9 @@ public class Proveedores {
 	private LocalDate eliminado;
 
 	public Proveedores() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Proveedores(char[] codProveedor, String razonSocial, char[] nit, char[] telefono, String direccion,
+	public Proveedores(String codProveedor, String razonSocial, char[] nit, char[] telefono, String direccion,
 			String correo, boolean activo, LocalDate creado, LocalDate actualizado, LocalDate eliminado) {
 		this.codProveedor = codProveedor;
 		this.razonSocial = razonSocial;
@@ -61,11 +66,11 @@ public class Proveedores {
 		this.eliminado = eliminado;
 	}
 
-	public char[] getCodProveedor() {
+	public String getCodProveedor() {
 		return codProveedor;
 	}
 
-	public void setCodProveedor(char[] codProveedor) {
+	public void setCodProveedor(String codProveedor) {
 		this.codProveedor = codProveedor;
 	}
 
@@ -141,12 +146,5 @@ public class Proveedores {
 		this.eliminado = eliminado;
 	}
 
-	@Override
-	public String toString() {
-		return "Proveedores [codProveedor=" + Arrays.toString(codProveedor) + ", razonSocial=" + razonSocial + ", nit="
-				+ Arrays.toString(nit) + ", telefono=" + Arrays.toString(telefono) + ", direccion=" + direccion
-				+ ", correo=" + correo + ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado
-				+ ", eliminado=" + eliminado + "]";
-	}
-
+	
 }

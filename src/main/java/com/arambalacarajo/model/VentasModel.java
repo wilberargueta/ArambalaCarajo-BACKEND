@@ -1,25 +1,24 @@
 package com.arambalacarajo.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class VentasModel {
 
 	private int idVenta;
 
-	private char[] numRegistro;
+	private String registroVenta;
 
 	private LocalDate fecha;
 
 	private String detalle;
 
 	public VentasModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public VentasModel(int idVenta, char[] numRegistro, LocalDate fecha, String detalle) {
+	public VentasModel(int idVenta, String registroVenta, LocalDate fecha, String detalle) {
 		this.idVenta = idVenta;
-		this.numRegistro = numRegistro;
+		this.registroVenta = registroVenta;
 		this.fecha = fecha;
 		this.detalle = detalle;
 	}
@@ -32,12 +31,12 @@ public class VentasModel {
 		this.idVenta = idVenta;
 	}
 
-	public char[] getNumRegistro() {
-		return numRegistro;
+	public String getRegistroVenta() {
+		return registroVenta;
 	}
 
-	public void setNumRegistro(char[] numRegistro) {
-		this.numRegistro = numRegistro;
+	public void setRegistroVenta(String registroVenta) {
+		this.registroVenta = registroVenta;
 	}
 
 	public LocalDate getFecha() {
@@ -54,12 +53,6 @@ public class VentasModel {
 
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
-	}
-
-	@Override
-	public String toString() {
-		return "Ventas [idVenta=" + idVenta + ", numRegistro=" + Arrays.toString(numRegistro) + ", fecha=" + fecha
-				+ ", detalle=" + detalle + "]";
 	}
 
 }

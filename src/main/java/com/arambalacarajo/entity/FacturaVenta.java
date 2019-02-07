@@ -1,5 +1,6 @@
 package com.arambalacarajo.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,7 +27,7 @@ public class FacturaVenta {
 	private Facturas factura;
 
 	public FacturaVenta() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public FacturaVenta(int idFacturaVenta, Ventas venta, Facturas factura) {

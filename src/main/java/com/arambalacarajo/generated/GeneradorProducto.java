@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Properties;
 import java.util.stream.Stream;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
@@ -18,7 +16,6 @@ public class GeneradorProducto implements IdentifierGenerator, Configurable {
 
 	private String prefix;
 	private String ceros;
-	private Log LOGG = LogFactory.getLog(GeneradorProducto.class);
 
 	@Override
 	public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
@@ -30,7 +27,7 @@ public class GeneradorProducto implements IdentifierGenerator, Configurable {
 		// ids.forEach(o -> LOGG.info(o));
 
 		Long max = ids.map(o -> o.replace(prefix + "-", "")).mapToLong(Long::parseLong).max().orElse(0L);
-		LOGG.info(max);
+		max += 1;
 		if (max < 10) {
 			ceros = "0000";
 		} else if (max < 100) {
@@ -43,8 +40,7 @@ public class GeneradorProducto implements IdentifierGenerator, Configurable {
 			ceros = "";
 		}
 
-		LOGG.info(prefix + "-" + ceros + (max + 1));
-		return prefix + "-" + ceros + (max + 1);
+		return prefix + "-" + ceros + max;
 	}
 
 	@Override

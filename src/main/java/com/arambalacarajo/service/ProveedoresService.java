@@ -26,12 +26,8 @@ public class ProveedoresService {
 
 	private Message m;
 
-	public Message addProveedores(ProveedoresModel em) {
-		m = new Message();
-		evr.save(evc.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Proveedores Agregado Correctamente..");
-		return m;
+	public ProveedoresModel addProveedores(ProveedoresModel em) {
+		return evc.EntityToModel(evr.save(evc.ModelToEntity(em)));
 	}
 
 	public Message deleteProveedores(ProveedoresModel em) {
@@ -57,7 +53,7 @@ public class ProveedoresService {
 
 		return lcpm;
 	}
-	
+
 	public List<ProveedoresModel> listaProveedoresByPrefix(String prefix) {
 
 		List<ProveedoresModel> lcpm = new ArrayList<>();
@@ -65,7 +61,8 @@ public class ProveedoresService {
 
 		return lcpm;
 	}
-	public ProveedoresModel findProveedoresByCod(char[] cod) {
+
+	public ProveedoresModel findProveedoresByCod(String cod) {
 
 		return evc.EntityToModel(evr.findProveedoresByCodProveedor(cod));
 	}

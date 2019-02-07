@@ -6,7 +6,6 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -32,7 +31,7 @@ public class Compras {
 	@Column(name = "fecha_compra")
 	private LocalDate fechaCompra;
 
-	@Column(name = "detalle")
+	@Column(name = "detalle", nullable = true)
 	private String detalle;
 
 	@ManyToOne
@@ -43,7 +42,7 @@ public class Compras {
 	private List<CompraProductos> compraProducto;
 
 	public Compras() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Compras(int idCompra, String registroCompra, LocalDate fechaCompra, String detalle, Proveedores proveedor) {

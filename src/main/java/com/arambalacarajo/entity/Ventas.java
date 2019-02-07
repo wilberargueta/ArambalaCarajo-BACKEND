@@ -1,7 +1,6 @@
 package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,31 +8,38 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
+
 @Entity()
 @Table(name = "ventas")
 public class Ventas {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id_venta")
+	
+	@Column(name = "id_venta", nullable = true)
 	private int idVenta;
 
-	@Column(name = "num_registro", nullable = false)
-	private char[] numRegistro;
+	@Id
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", 
+	parameters = @Parameter(name = "prefix", value = "V"), 
+	strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	@Column(name = "registro_venta", unique = true)
+	private String registroVenta;
 
 	@Column(name = "fecha", nullable = false)
-	private LocalDate fecha = LocalDate.now();
+	private LocalDate fecha;
 
-	@Column(name = "detalle")
+	@Column(name = "detalle", nullable = true)
 	private String detalle;
 
 	public Ventas() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public Ventas(int idVenta, char[] numRegistro, LocalDate fecha, String detalle) {
+	public Ventas(int idVenta, String registroVenta, LocalDate fecha, String detalle) {
 		this.idVenta = idVenta;
-		this.numRegistro = numRegistro;
+		this.registroVenta = registroVenta;
 		this.fecha = fecha;
 		this.detalle = detalle;
 	}
@@ -46,12 +52,12 @@ public class Ventas {
 		this.idVenta = idVenta;
 	}
 
-	public char[] getNumRegistro() {
-		return numRegistro;
+	public String getRegistroVenta() {
+		return registroVenta;
 	}
 
-	public void setNumRegistro(char[] numRegistro) {
-		this.numRegistro = numRegistro;
+	public void setRegistroVenta(String registroVenta) {
+		this.registroVenta = registroVenta;
 	}
 
 	public LocalDate getFecha() {
@@ -68,12 +74,6 @@ public class Ventas {
 
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
-	}
-
-	@Override
-	public String toString() {
-		return "Ventas [idVenta=" + idVenta + ", numRegistro=" + Arrays.toString(numRegistro) + ", fecha=" + fecha
-				+ ", detalle=" + detalle + "]";
 	}
 
 }

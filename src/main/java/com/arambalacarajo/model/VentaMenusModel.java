@@ -11,7 +11,7 @@ public class VentaMenusModel {
 	private int cantidad = 1;
 
 	public VentaMenusModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public VentaMenusModel(int idVentaMenu, MenusModel menu, VentasModel venta, int cantidad) {

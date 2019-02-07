@@ -30,7 +30,7 @@ public class MenuServicio {
 	private int cantidad;
 
 	public MenuServicio() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MenuServicio(int idMenuServicio, Menus menu, Servicios servicio, int cantidad) {

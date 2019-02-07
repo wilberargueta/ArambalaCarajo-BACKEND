@@ -20,7 +20,7 @@ public class Existencias {
 	private int idExistencias;
 
 	@Column(name = "cantidad")
-	private int cantidad;
+	private double cantidad;
 
 
 	@OneToOne
@@ -31,10 +31,10 @@ public class Existencias {
 
 	}
 
-	public Existencias(int idExistencias, int cantidad) {
+	public Existencias(int idExistencias, double cantidad, Productos productos) {
 		this.idExistencias = idExistencias;
 		this.cantidad = cantidad;
-
+		this.productos = productos;
 	}
 
 	public int getIdExistencias() {
@@ -45,11 +45,11 @@ public class Existencias {
 		this.idExistencias = idExistencias;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 
@@ -61,11 +61,7 @@ public class Existencias {
 		this.productos = productos;
 	}
 
-	@Override
-	public String toString() {
-		return "Existencias [idExistencias=" + idExistencias + ", cantidad=" + cantidad + ", codProducto="
-				 + ", productos=" + productos + "]";
-	}
+	
 	
 
 	

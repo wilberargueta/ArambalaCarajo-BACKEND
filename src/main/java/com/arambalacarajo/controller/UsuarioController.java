@@ -44,7 +44,9 @@ public class UsuarioController {
 			r = new Respuesta(new Message(HttpStatus.BAD_REQUEST, "No se permiten valores vacios"), null);
 		} else {
 			u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
-			r = new Respuesta(new Message(HttpStatus.OK, "Usuario Agregado Correctamnte"), ur.saveAndFlush(u));
+			Usuario us = ur.saveAndFlush(u);
+			us.setPass("");
+			r = new Respuesta(new Message(HttpStatus.OK, "Usuario Agregado Correctamnte"), us);
 		}
 
 		return r;
@@ -53,31 +55,18 @@ public class UsuarioController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuario/update", method = RequestMethod.POST)
 	public Respuesta updateUsuario(@RequestBody Usuario u) {
-		Usuario uT = ur.findFirstUsuarioByNickContaining(u.getNick());
 		Respuesta r;
 
-		if (uT.getNick() == u.getNick()) {
-			if (uT.getPass() != u.getPass()) {
-				u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
-
-			}
-			r = new Respuesta(new Message(HttpStatus.OK, "Usuario actualizado Correctamnte"), ur.save(u));
-
-		} else if (ur.existsUsuarioByNick(u.getNick())) {
-
+		if (ur.existsUsuarioByNick(u.getNick())) {
 			r = new Respuesta(new Message(HttpStatus.BAD_REQUEST, "El nick del usuario ya se encuentra duplicado"),
 					null);
-			return r;
-
 		} else if ((u.getNick() == null) || (u.getPass() == null)) {
 			r = new Respuesta(new Message(HttpStatus.BAD_REQUEST, "No se permiten valores vacios"), null);
 		} else {
-
-			if (uT.getPass() != u.getPass()) {
-				u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
-			}
-
-			r = new Respuesta(new Message(HttpStatus.OK, "Usuario actualizado Correctamnte"), ur.save(u));
+			u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
+			Usuario us = ur.saveAndFlush(u);
+			us.setPass("");
+			r = new Respuesta(new Message(HttpStatus.OK, "Usuario Agregado Correctamnte"), us);
 		}
 
 		return r;
@@ -108,8 +97,9 @@ public class UsuarioController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuario/{nick}", method = RequestMethod.GET)
 	public Usuario getUsuarioByNickBU(@PathVariable String nick) {
-
-		return ur.findFirstUsuarioByNickContaining(nick);
+		Usuario us =  ur.findFirstUsuarioByNickContaining(nick);
+		us.setPass("");
+		return us;
 	}
 
 }

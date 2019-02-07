@@ -1,4 +1,4 @@
-package com.arambalacarajo.entity;
+ package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
 
@@ -20,7 +20,7 @@ public class Menus {
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
 
-	@Column(name = "detalles", nullable = false)
+	@Column(name = "detalles", nullable = true)
 	private String detalles;
 
 	@Column(name = "precio", nullable = false)

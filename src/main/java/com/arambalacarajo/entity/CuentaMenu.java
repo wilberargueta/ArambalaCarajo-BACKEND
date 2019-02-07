@@ -29,7 +29,7 @@ public class CuentaMenu {
 	private int cantidad;
 
 	public CuentaMenu() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CuentaMenu(int idCuentaMenu, Cuenta cuenta, Menus menu, int cantidad) {

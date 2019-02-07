@@ -8,7 +8,7 @@ public class MenuServicioModel {
 	private int cantidad;
 
 	public MenuServicioModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MenuServicioModel(int idMenuServicio, MenusModel menu, ServiciosModel servicio, int cantidad) {

@@ -26,7 +26,7 @@ public class FacturaCompra {
 	private Facturas factura;
 
 	public FacturaCompra() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public FacturaCompra(int idFacturaCompra, Compras compra, Facturas factura) {

@@ -26,12 +26,9 @@ public class ProductosService {
 
 	private Message m;
 
-	public Message addProductos(ProductosModel em) {
-		m = new Message();
-		evr.save(evc.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Productos Agregado Correctamente..");
-		return m;
+	public ProductosModel addProductos(ProductosModel em) {
+
+		return evc.EntityToModel(evr.save(evc.ModelToEntity(em)));
 	}
 
 	public Message deleteProductos(ProductosModel em) {
@@ -58,10 +55,11 @@ public class ProductosService {
 		return lcpm;
 	}
 
-	public ProductosModel findProductosByCod(char[] cod) {
+	public ProductosModel findProductosByCod(String cod) {
 
 		return evc.EntityToModel(evr.findProductosByCodProducto(cod));
 	}
+
 	public List<ProductosModel> listaProductosByNombre(String nombre) {
 
 		List<ProductosModel> lcpm = new ArrayList<>();
@@ -69,6 +67,5 @@ public class ProductosService {
 
 		return lcpm;
 	}
-
 
 }

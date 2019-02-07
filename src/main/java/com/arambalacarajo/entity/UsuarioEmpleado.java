@@ -26,7 +26,7 @@ public class UsuarioEmpleado {
 	private Usuario usuario;
 
 	public UsuarioEmpleado() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public UsuarioEmpleado(int idUsuarioEmpleado, Empleados empleado, Usuario usuario) {

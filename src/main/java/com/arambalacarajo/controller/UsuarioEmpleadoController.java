@@ -2,7 +2,6 @@ package com.arambalacarajo.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -25,16 +24,13 @@ public class UsuarioEmpleadoController {
 	@Autowired
 	@Qualifier("usuarioEmpleadoRepository")
 	private UsuarioEmpleadoRepository uer;
-	
-
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioEmpleado", method = RequestMethod.POST)
 	public UsuarioEmpleado addUsuarioEmpleado(@RequestBody UsuarioEmpleado ue) {
-
-	
-
-		return uer.saveAndFlush(ue);
+		UsuarioEmpleado uet = uer.saveAndFlush(ue);
+		ue.getUsuario().setPass("");
+		return uet;
 	}
 
 	@CrossOrigin(origins = "*")
@@ -70,22 +66,25 @@ public class UsuarioEmpleadoController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioEmpleado/usuario", method = RequestMethod.POST)
 	public UsuarioEmpleado getUsuarioEmpleadoByUsuario(@RequestBody Usuario u) {
-
-		return uer.findUsuarioEmpleadoByUsuario(u);
+		UsuarioEmpleado ue = uer.findUsuarioEmpleadoByUsuario(u);
+		ue.getUsuario().setPass("");
+		return ue;
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioEmpleado/empleados", method = RequestMethod.POST)
 	public UsuarioEmpleado getUsuarioEmpleadoByUsuario(@RequestBody Empleados e) {
-
-		return uer.findUsuarioEmpleadoByEmpleado(e);
+		UsuarioEmpleado ue = uer.findUsuarioEmpleadoByEmpleado(e);
+		ue.getUsuario().setPass("");
+		return ue;
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioEmpleado/{id}", method = RequestMethod.GET)
 	public UsuarioEmpleado getUsuarioEmpleadoById(@PathVariable int id) {
-
-		return uer.findUsuarioEmpleadoByIdUsuarioEmpleado(id);
+		UsuarioEmpleado ue = uer.findUsuarioEmpleadoByIdUsuarioEmpleado(id);
+		ue.getUsuario().setPass("");
+		return ue;
 	}
 
 }

@@ -8,7 +8,7 @@ public class Message {
 	private String message;
 
 	public Message() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Message(HttpStatus status, String message) {

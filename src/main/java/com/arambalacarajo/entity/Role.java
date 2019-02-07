@@ -19,7 +19,7 @@ public class Role {
 	private String role;
 
 	public Role() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Role(int idRole, String role) {

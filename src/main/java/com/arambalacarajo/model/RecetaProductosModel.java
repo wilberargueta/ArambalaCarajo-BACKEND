@@ -1,5 +1,7 @@
 package com.arambalacarajo.model;
 
+import com.arambalacarajo.entity.MedidaProducto;
+
 public class RecetaProductosModel {
 
 	private int idRecetaProducto;
@@ -8,16 +10,20 @@ public class RecetaProductosModel {
 
 	private ProductosModel producto;
 
-	private int cantidad;
-
+	private double cantidad;
+	
+	private MedidaProducto medida;
+	
 	public RecetaProductosModel() {
 	}
 
-	public RecetaProductosModel(int idRecetaProducto, RecetasModel receta, ProductosModel producto, int cantidad) {
+	public RecetaProductosModel(int idRecetaProducto, RecetasModel receta, ProductosModel producto, double cantidad,
+			MedidaProducto medida) {
 		this.idRecetaProducto = idRecetaProducto;
 		this.receta = receta;
 		this.producto = producto;
 		this.cantidad = cantidad;
+		this.medida = medida;
 	}
 
 	public int getIdRecetaProducto() {
@@ -44,18 +50,21 @@ public class RecetaProductosModel {
 		this.producto = producto;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	@Override
-	public String toString() {
-		return "RecetaProductos [idRecetaProducto=" + idRecetaProducto + ", receta=" + receta + ", producto=" + producto
-				+ ", cantidad=" + cantidad + "]";
+	public MedidaProducto getMedida() {
+		return medida;
 	}
+
+	public void setMedida(MedidaProducto medida) {
+		this.medida = medida;
+	}
+	
 
 }

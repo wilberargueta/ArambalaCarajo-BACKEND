@@ -2,6 +2,7 @@ package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class Caja {
 	@Column(name = "monto_cierre", nullable = true)
 	private String montoCierre;
 
-	@OneToOne
+	@OneToOne()
 	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
 
@@ -39,7 +40,7 @@ public class Caja {
 	private boolean cajaCerrada;
 
 	public Caja() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Caja(int idCaja, LocalDate aperturaCaja, LocalDate cierreCaja, String montoApertura, String montoCierre,

@@ -15,7 +15,7 @@ public class MenuCabanaModel {
 	private LocalDate fechaFinal;
 
 	public MenuCabanaModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MenuCabanaModel(int idCabanaMenu, CabanasModel cabana, MenusModel menu, LocalDate fechaInicio,

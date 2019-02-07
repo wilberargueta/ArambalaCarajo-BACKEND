@@ -22,6 +22,7 @@ public class RecetaProductosConvert {
 		rp.setProducto(pc.ModelToEntity(rpm.getProducto()));
 		rp.setReceta(rc.ModelToEntity(rpm.getReceta()));
 		rp.setCantidad(rpm.getCantidad());
+		rp.setMedida(rpm.getMedida());
 
 		return rp;
 	}
@@ -33,6 +34,7 @@ public class RecetaProductosConvert {
 		rp.setProducto(pc.EntityToModel(rpm.getProducto()));
 		rp.setReceta(rc.EntityToModel(rpm.getReceta()));
 		rp.setCantidad(rpm.getCantidad());
+		rp.setMedida(rpm.getMedida());
 
 		return rp;
 	}

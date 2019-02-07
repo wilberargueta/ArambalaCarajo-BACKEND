@@ -27,7 +27,7 @@ public class MenuRecetas {
 	private Menus menu;
 
 	public MenuRecetas() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public MenuRecetas(int idMenuReceta, Recetas receta, Menus menu) {

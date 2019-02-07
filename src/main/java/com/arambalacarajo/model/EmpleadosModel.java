@@ -1,7 +1,6 @@
 package com.arambalacarajo.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 public class EmpleadosModel {
 
@@ -28,11 +27,12 @@ public class EmpleadosModel {
 	private LocalDate eliminado;
 
 	public EmpleadosModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public EmpleadosModel(String codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
-			String direccion, String telefono) {
+			String direccion, String telefono, boolean activo, LocalDate creado, LocalDate actualizado,
+			LocalDate eliminado) {
 		this.codEmpleado = codEmpleado;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -40,13 +40,17 @@ public class EmpleadosModel {
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		this.activo = activo;
+		this.creado = creado;
+		this.actualizado = actualizado;
+		this.eliminado = eliminado;
 	}
 
 	public String getCodEmpleado() {
 		return codEmpleado;
 	}
 
-	public void setCodEmpleado(String  hacodEmpleado) {
+	public void setCodEmpleado(String codEmpleado) {
 		this.codEmpleado = codEmpleado;
 	}
 
@@ -130,12 +134,6 @@ public class EmpleadosModel {
 		this.eliminado = eliminado;
 	}
 
-	@Override
-	public String toString() {
-		return "Empleados [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", apellido="
-				+ apellido + ", dui=" + dui + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
-				+ ", telefono=" + telefono + ", activo=" + activo + ", creado=" + creado + ", actualizado="
-				+ actualizado + ", eliminado=" + eliminado + "]";
-	}
+	
 
 }

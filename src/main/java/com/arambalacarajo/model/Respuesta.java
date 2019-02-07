@@ -5,7 +5,7 @@ public class Respuesta {
 	private Message message;
 	private Object valor;
 	public Respuesta() {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public Respuesta(Message message, Object valor) {
 		this.message = message;

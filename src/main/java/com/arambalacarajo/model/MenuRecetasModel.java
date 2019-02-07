@@ -9,7 +9,7 @@ public class MenuRecetasModel {
 	private MenusModel menu;
 
 	public MenuRecetasModel() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public MenuRecetasModel(int idMenuReceta, RecetasModel receta, MenusModel menu) {

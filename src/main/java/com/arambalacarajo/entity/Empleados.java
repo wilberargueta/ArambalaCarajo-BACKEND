@@ -1,7 +1,6 @@
 package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +20,7 @@ public class Empleados {
     @GenericGenerator(name = "prod-generator", 
       parameters = @Parameter(name = "prefix", value = "E"), 
       strategy = "com.arambalacarajo.generated.GeneradorProducto")
-	@Column(name = "cod_empleado")
+	@Column(name = "cod_empleado", unique = true)
 	private String codEmpleado;
 
 	@Column(name = "nombre", nullable = false)
@@ -55,11 +54,12 @@ public class Empleados {
 	private LocalDate eliminado;
 
 	public Empleados() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Empleados(String codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
-			String direccion, String telefono) {
+			String direccion, String telefono, boolean activo, LocalDate creado, LocalDate actualizado,
+			LocalDate eliminado) {
 		this.codEmpleado = codEmpleado;
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -67,6 +67,10 @@ public class Empleados {
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
 		this.telefono = telefono;
+		this.activo = activo;
+		this.creado = creado;
+		this.actualizado = actualizado;
+		this.eliminado = eliminado;
 	}
 
 	public String getCodEmpleado() {
@@ -157,12 +161,6 @@ public class Empleados {
 		this.eliminado = eliminado;
 	}
 
-	@Override
-	public String toString() {
-		return "Empleados [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", apellido="
-				+ apellido + ", dui=" + dui + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion
-				+ ", telefono=" + telefono + ", activo=" + activo + ", creado=" + creado + ", actualizado="
-				+ actualizado + ", eliminado=" + eliminado + "]";
-	}
+	
 
 }

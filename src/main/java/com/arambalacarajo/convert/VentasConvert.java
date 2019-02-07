@@ -12,7 +12,7 @@ public class VentasConvert {
 		Ventas v = new Ventas();
 
 		v.setIdVenta(vm.getIdVenta());
-		v.setNumRegistro(vm.getNumRegistro());
+		v.setRegistroVenta(vm.getRegistroVenta());
 		v.setFecha(vm.getFecha());
 		v.setDetalle(vm.getDetalle());
 
@@ -23,7 +23,7 @@ public class VentasConvert {
 		VentasModel v = new VentasModel();
 
 		v.setIdVenta(vm.getIdVenta());
-		v.setNumRegistro(vm.getNumRegistro());
+		v.setRegistroVenta(vm.getRegistroVenta());
 		v.setFecha(vm.getFecha());
 		v.setDetalle(vm.getDetalle());
 

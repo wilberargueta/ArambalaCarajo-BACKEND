@@ -22,7 +22,7 @@ public class Cuenta {
 	@Column(name = "id_cuenta", unique = true)
 	private String idCuenta;
 
-	@Column(name = "fecha_cuenta", nullable = false)
+	@Column(name = "fecha_cuenta", nullable = false, columnDefinition="DATE")
 	private LocalDate fechaCuenta;
 
 	@Column(name = "descuento", nullable = true)
@@ -33,20 +33,28 @@ public class Cuenta {
 
 	@Column(name = "mesa", nullable = true)
 	private int mesa;
+	
 	@Column(name="cobrada", nullable = false)
 	private boolean cobrada;
+	
+	@Column(name="cobrable", nullable = false)
+	private boolean cobrable;
+	
 
 	public Cuenta() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public Cuenta(String idCuenta, LocalDate fechaCuenta, String descuento, String nombre, int mesa, boolean cobrada) {
+	public Cuenta(String idCuenta, LocalDate fechaCuenta, String descuento, String nombre, int mesa, boolean cobrada,
+			boolean cobrable) {
 		this.idCuenta = idCuenta;
 		this.fechaCuenta = fechaCuenta;
 		this.descuento = descuento;
 		this.nombre = nombre;
 		this.mesa = mesa;
 		this.cobrada = cobrada;
+		this.cobrable = cobrable;
+		
 	}
 
 	public String getIdCuenta() {
@@ -97,11 +105,21 @@ public class Cuenta {
 		this.cobrada = cobrada;
 	}
 
+	public boolean isCobrable() {
+		return cobrable;
+	}
+
+	public void setCobrable(boolean cobrable) {
+		this.cobrable = cobrable;
+	}
+
 	@Override
 	public String toString() {
 		return "Cuenta [idCuenta=" + idCuenta + ", fechaCuenta=" + fechaCuenta + ", descuento=" + descuento
-				+ ", nombre=" + nombre + ", mesa=" + mesa + ", cobrada=" + cobrada + "]";
+				+ ", nombre=" + nombre + ", mesa=" + mesa + ", cobrada=" + cobrada + ", cobrable=" + cobrable + "]";
 	}
+
+
 
 	
 	

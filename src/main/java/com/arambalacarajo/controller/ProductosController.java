@@ -25,7 +25,7 @@ public class ProductosController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/productos", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody ProductosModel cp) {
+	public ProductosModel nuevo(@RequestBody ProductosModel cp) {
 		cp.setActivo(true);
 		cp.setActualizado(LocalDate.now());
 		cp.setCreado(LocalDate.now());
@@ -57,7 +57,7 @@ public class ProductosController {
 	@RequestMapping(path = "/api/productos/{cod}", method = RequestMethod.GET)
 	public ProductosModel byId(@PathVariable String cod) {
 
-		return cps.findProductosByCod(cod.toCharArray());
+		return cps.findProductosByCod(cod);
 	}
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/productos/nombre/{nombre}", method = RequestMethod.GET)

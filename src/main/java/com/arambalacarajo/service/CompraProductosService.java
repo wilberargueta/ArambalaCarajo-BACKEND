@@ -3,14 +3,12 @@ package com.arambalacarajo.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import com.arambalacarajo.controller.EmpleadosController;
 import com.arambalacarajo.convert.CompraProductosConvert;
 import com.arambalacarajo.convert.ComprasConvert;
 import com.arambalacarajo.model.CompraProductosModel;
@@ -35,7 +33,6 @@ public class CompraProductosService {
 	private ComprasConvert cc;
 
 	private Message m;
-	private final Log LOGGER = LogFactory.getLog(CompraProductosService.class); 
 
 	public CompraProductosModel addCompraProducto(CompraProductosModel cp) {
 		

@@ -67,7 +67,7 @@ public class CabanasService {
 
 	public CabanasModel findCabañaByCod(String cod) {
 
-		return cc.EntityToModel(cr.findCabañaByCodCabana(cod.toCharArray()));
+		return cc.EntityToModel(cr.findCabañaByCodCabana(cod));
 	}
 
 }

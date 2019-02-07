@@ -17,7 +17,7 @@ public class RecetasConvert {
 		r.setCreado(rm.getCreado());
 		r.setActualizado(rm.getActualizado());
 		r.setEliminado(rm.getEliminado());
-
+	
 		return r;
 	}
 

@@ -1,25 +1,31 @@
 package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "productos")
 public class Productos {
 	@Id
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", 
+	parameters = @Parameter(name = "prefix", value = "P"), 
+	strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "cod_producto")
-	private char[] codProducto;
+	private String codProducto;
 
 	@Column(name = "nombre", nullable = false)
 	private String nombre;
-
-	@Column(name = "medida", nullable = false)
-	private String medida;
 
 	@Column(name = "activo", nullable = false)
 	private boolean activo = true;
@@ -33,26 +39,30 @@ public class Productos {
 	@Column(name = "eliminado")
 	private LocalDate eliminado;
 
+	@ManyToOne
+	@JoinColumn(name = "medida", nullable = false)
+	private MedidaProducto medida;
+
 	public Productos() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public Productos(char[] codProducto, String nombre, String medida, boolean activo, LocalDate creado,
-			LocalDate actualizado, LocalDate eliminado) {
+	public Productos(String codProducto, String nombre, boolean activo, LocalDate creado, LocalDate actualizado,
+			LocalDate eliminado, MedidaProducto medida) {
 		this.codProducto = codProducto;
 		this.nombre = nombre;
-		this.medida = medida;
 		this.activo = activo;
 		this.creado = creado;
 		this.actualizado = actualizado;
 		this.eliminado = eliminado;
+		this.medida = medida;
 	}
 
-	public char[] getCodProducto() {
+	public String getCodProducto() {
 		return codProducto;
 	}
 
-	public void setCodProducto(char[] codProducto) {
+	public void setCodProducto(String codProducto) {
 		this.codProducto = codProducto;
 	}
 
@@ -62,14 +72,6 @@ public class Productos {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public String getMedida() {
-		return medida;
-	}
-
-	public void setMedida(String medida) {
-		this.medida = medida;
 	}
 
 	public boolean isActivo() {
@@ -104,11 +106,13 @@ public class Productos {
 		this.eliminado = eliminado;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductosModel [codProducto=" + Arrays.toString(codProducto) + ", nombre=" + nombre + ", medida="
-				+ medida + ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado="
-				+ eliminado + "]";
+	public MedidaProducto getMedida() {
+		return medida;
 	}
+
+	public void setMedida(MedidaProducto medida) {
+		this.medida = medida;
+	}
+	
 
 }

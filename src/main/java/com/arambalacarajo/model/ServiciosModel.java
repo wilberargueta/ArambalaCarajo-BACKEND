@@ -11,7 +11,7 @@ public class ServiciosModel {
 	private String detalle;
 
 	public ServiciosModel() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
 	public ServiciosModel(int idServicio, String nombre, String precio, String detalle) {

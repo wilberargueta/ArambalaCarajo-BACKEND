@@ -4,7 +4,7 @@ public class ExistenciasModel {
 
 	private int idExistencias;
 
-	private int cantidad;
+	private double cantidad;
 
 	private ProductosModel productos;
 
@@ -12,10 +12,10 @@ public class ExistenciasModel {
 
 	}
 
-	public ExistenciasModel(int idExistencias, int cantidad) {
+	public ExistenciasModel(int idExistencias, double cantidad, ProductosModel productos) {
 		this.idExistencias = idExistencias;
 		this.cantidad = cantidad;
-
+		this.productos = productos;
 	}
 
 	public int getIdExistencias() {
@@ -26,11 +26,11 @@ public class ExistenciasModel {
 		this.idExistencias = idExistencias;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 
@@ -42,10 +42,6 @@ public class ExistenciasModel {
 		this.productos = productos;
 	}
 
-	@Override
-	public String toString() {
-		return "Existencias [idExistencias=" + idExistencias + ", cantidad=" + cantidad + ", codProducto="
-				+ ", productos=" + productos + "]";
-	}
+
 
 }

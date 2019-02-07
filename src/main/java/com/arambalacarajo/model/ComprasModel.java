@@ -1,7 +1,6 @@
 package com.arambalacarajo.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 public class ComprasModel {
@@ -19,7 +18,7 @@ public class ComprasModel {
 	private List<CompraProductosModel> compraProducto;
 
 	public ComprasModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ComprasModel(int idCompra,String registroCompra, LocalDate fechaCompra, String detalle, ProveedoresModel proveedor) {

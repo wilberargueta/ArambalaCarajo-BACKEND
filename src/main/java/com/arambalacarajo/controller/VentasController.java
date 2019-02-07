@@ -22,7 +22,7 @@ public class VentasController {
 	private VentasService cps;
 
 	@RequestMapping(path = "/api/ventas", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody VentasModel cp) {
+	public VentasModel nuevo(@RequestBody VentasModel cp) {
 
 		return cps.addVentas(cp);
 	}
@@ -46,9 +46,15 @@ public class VentasController {
 	}
 
 	@RequestMapping(path = "/api/ventas/{id}", method = RequestMethod.GET)
-	public VentasModel byId(@PathVariable int id) {
+	public VentasModel byId(@PathVariable String id) {
 
 		return cps.findVentasById(id);
+	}
+
+	@RequestMapping(path = "/api/ventas/fecha/{fecha}", method = RequestMethod.GET)
+	public List<VentasModel> listaByFecha(@PathVariable String fecha) {
+
+		return cps.listaVentasByFecha(fecha);
 	}
 
 }

@@ -17,13 +17,13 @@ public class RecetasModel {
 	private LocalDate actualizado = LocalDate.now();
 
 	private LocalDate eliminado;
-
+	
 	public RecetasModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public RecetasModel(int idReceta, String nombre, String detalle, boolean activa, LocalDate creado, LocalDate actualizado,
-			LocalDate eliminado) {
+	public RecetasModel(int idReceta, String nombre, String detalle, boolean activa, LocalDate creado,
+			LocalDate actualizado, LocalDate eliminado) {
 		this.idReceta = idReceta;
 		this.nombre = nombre;
 		this.detalle = detalle;
@@ -89,10 +89,6 @@ public class RecetasModel {
 		this.eliminado = eliminado;
 	}
 
-	@Override
-	public String toString() {
-		return "Recetas [idReceta=" + idReceta + ", nombre=" + nombre + ", detalle=" + detalle + ", activa=" + activa
-				+ ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado=" + eliminado + "]";
-	}
-
+	
+	
 }

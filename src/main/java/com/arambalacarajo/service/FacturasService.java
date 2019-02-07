@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import com.arambalacarajo.convert.FacturasConvert;
+import com.arambalacarajo.entity.TipoComprobante;
 import com.arambalacarajo.model.FacturasModel;
 import com.arambalacarajo.model.Message;
 import com.arambalacarajo.repository.FacturasRepository;
@@ -26,12 +27,9 @@ public class FacturasService {
 
 	private Message m;
 
-	public Message addFacturas(FacturasModel em) {
-		m = new Message();
-		evr.save(evc.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Facturas Agregado Correctamente..");
-		return m;
+	public FacturasModel addFacturas(FacturasModel em) {
+
+		return evc.EntityToModel(evr.saveAndFlush(evc.ModelToEntity(em)));
 	}
 
 	public Message deleteFacturas(FacturasModel em) {
@@ -63,9 +61,15 @@ public class FacturasService {
 		return evc.EntityToModel(evr.findFacturaByIdFactura(id));
 	}
 
-	public FacturasModel findFacturaByNumFactura(char[] num) {
+	public FacturasModel findFacturaByNumFactura(String num) {
 
 		return evc.EntityToModel(evr.findFacturaByNumFactura(num));
+	}
+
+	public List<FacturasModel> findFacturaByComprobante(TipoComprobante tc) {
+		List<FacturasModel> lcpm = new ArrayList<>();
+		evr.findFacturasByTipoComprobante(tc).forEach(e -> lcpm.add(evc.EntityToModel(e)));
+		return lcpm;
 	}
 
 }

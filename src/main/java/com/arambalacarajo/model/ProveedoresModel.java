@@ -1,11 +1,11 @@
 package com.arambalacarajo.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+
 
 public class ProveedoresModel {
 
-	private char[] codProveedor;
+	private String codProveedor;
 
 	private String razonSocial;
 
@@ -26,10 +26,10 @@ public class ProveedoresModel {
 	private LocalDate eliminado;
 
 	public ProveedoresModel() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public ProveedoresModel(char[] codProveedor, String razonSocial, char[] nit, char[] telefono, String direccion,
+	public ProveedoresModel(String codProveedor, String razonSocial, char[] nit, char[] telefono, String direccion,
 			String correo, boolean activo, LocalDate creado, LocalDate actualizado, LocalDate eliminado) {
 		this.codProveedor = codProveedor;
 		this.razonSocial = razonSocial;
@@ -43,11 +43,11 @@ public class ProveedoresModel {
 		this.eliminado = eliminado;
 	}
 
-	public char[] getCodProveedor() {
+	public String getCodProveedor() {
 		return codProveedor;
 	}
 
-	public void setCodProveedor(char[] codProveedor) {
+	public void setCodProveedor(String codProveedor) {
 		this.codProveedor = codProveedor;
 	}
 
@@ -122,14 +122,6 @@ public class ProveedoresModel {
 	public void setEliminado(LocalDate eliminado) {
 		this.eliminado = eliminado;
 	}
+
 	
-
-	@Override
-	public String toString() {
-		return "Proveedores [codProveedor=" + Arrays.toString(codProveedor) + ", razonSocial=" + razonSocial + ", nit="
-				+ Arrays.toString(nit) + ", telefono=" + Arrays.toString(telefono) + ", direccion=" + direccion
-				+ ", correo=" + correo + ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado
-				+ ", eliminado=" + eliminado + "]";
-	}
-
 }

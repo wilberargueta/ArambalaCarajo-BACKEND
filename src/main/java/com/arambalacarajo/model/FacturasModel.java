@@ -1,15 +1,18 @@
 package com.arambalacarajo.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+
+import com.arambalacarajo.entity.TipoComprobante;
 
 public class FacturasModel {
 
 	private int idFactura;
 
-	private char[] numFactura;
+	private String numFactura;
 
-	private char[] correlativoFactura;
+	private String razonSocial;
+
+	private String correlativoFactura;
 
 	private LocalDate fechaFactura;
 
@@ -17,18 +20,22 @@ public class FacturasModel {
 
 	private String detalle;
 
+	private TipoComprobante tipoComprobante;
+
 	public FacturasModel() {
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public FacturasModel(int idFactura, char[] numFactura, char[] correlativoFactura, LocalDate fechaFactura, int iva,
-			String detalle) {
+	public FacturasModel(int idFactura, String numFactura, String razonSocial, String correlativoFactura,
+			LocalDate fechaFactura, int iva, String detalle, TipoComprobante tipoComprobante) {
 		this.idFactura = idFactura;
 		this.numFactura = numFactura;
+		this.razonSocial = razonSocial;
 		this.correlativoFactura = correlativoFactura;
 		this.fechaFactura = fechaFactura;
 		this.iva = iva;
 		this.detalle = detalle;
+		this.tipoComprobante = tipoComprobante;
 	}
 
 	public int getIdFactura() {
@@ -39,19 +46,27 @@ public class FacturasModel {
 		this.idFactura = idFactura;
 	}
 
-	public char[] getNumFactura() {
+	public String getNumFactura() {
 		return numFactura;
 	}
 
-	public void setNumFactura(char[] numFactura) {
+	public void setNumFactura(String numFactura) {
 		this.numFactura = numFactura;
 	}
 
-	public char[] getCorrelativoFactura() {
+	public String getRazonSocial() {
+		return razonSocial;
+	}
+
+	public void setRazonSocial(String razonSocial) {
+		this.razonSocial = razonSocial;
+	}
+
+	public String getCorrelativoFactura() {
 		return correlativoFactura;
 	}
 
-	public void setCorrelativoFactura(char[] correlativoFactura) {
+	public void setCorrelativoFactura(String correlativoFactura) {
 		this.correlativoFactura = correlativoFactura;
 	}
 
@@ -79,11 +94,19 @@ public class FacturasModel {
 		this.detalle = detalle;
 	}
 
+	public TipoComprobante getTipoComprobante() {
+		return tipoComprobante;
+	}
+
+	public void setTipoComprobante(TipoComprobante tipoComprobante) {
+		this.tipoComprobante = tipoComprobante;
+	}
+
 	@Override
 	public String toString() {
-		return "FacturasModel [idFactura=" + idFactura + ", numFactura=" + Arrays.toString(numFactura)
-				+ ", correlativoFactura=" + Arrays.toString(correlativoFactura) + ", fechaFactura=" + fechaFactura
-				+ ", iva=" + iva + ", detalle=" + detalle + "]";
+		return "FacturasModel [idFactura=" + idFactura + ", numFactura=" + numFactura + ", razonSocial=" + razonSocial
+				+ ", correlativoFactura=" + correlativoFactura + ", fechaFactura=" + fechaFactura + ", iva=" + iva
+				+ ", detalle=" + detalle + ", tipoComprobante=" + tipoComprobante + "]";
 	}
 
 }

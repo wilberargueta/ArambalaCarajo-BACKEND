@@ -2,6 +2,8 @@ package com.arambalacarajo.controller;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,6 +24,9 @@ public class ServiciosController {
 	@Qualifier("serviciosService")
 	private ServiciosService ss;
 	
+	
+	Log LOGG = LogFactory.getLog(ServiciosController.class);
+	
 	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios", method = RequestMethod.GET)
 	public List<ServiciosModel> lista() {
@@ -38,7 +43,7 @@ public class ServiciosController {
 	@CrossOrigin(origins="*")
 	@RequestMapping(path = "/api/servicios/busqueda/{nombre}", method = RequestMethod.GET)
 	public List<ServiciosModel> listaByName(@PathVariable String nombre) {
-
+		LOGG.info(nombre);
 		return ss.listaServiciosByNombre(nombre);
 	}
 	

@@ -9,7 +9,7 @@ public class FacturaCompraModel {
 	private FacturasModel factura;
 
 	public FacturaCompraModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public FacturaCompraModel(int idFacturaCompra, ComprasModel compra, FacturasModel factura) {

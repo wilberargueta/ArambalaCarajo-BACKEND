@@ -25,7 +25,7 @@ public class ProveedoresController {
 	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/proveedores", method = RequestMethod.POST)
-	public Message nuevo(@RequestBody ProveedoresModel cp) {
+	public ProveedoresModel nuevo(@RequestBody ProveedoresModel cp) {
 		cp.setCreado(LocalDate.now());
 		cp.setActualizado(LocalDate.now());
 		return cps.addProveedores(cp);
@@ -56,7 +56,7 @@ public class ProveedoresController {
 	@RequestMapping(path = "/api/proveedores/{cod}", method = RequestMethod.GET)
 	public ProveedoresModel byId(@PathVariable String cod) {
 
-		return cps.findProveedoresByCod(cod.toCharArray());
+		return cps.findProveedoresByCod(cod);
 	}
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/proveedores/prefix/{prefix}", method = RequestMethod.GET)

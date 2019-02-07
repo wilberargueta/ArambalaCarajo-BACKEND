@@ -22,4 +22,5 @@ public interface CuentaMenuRepository extends JpaRepository<CuentaMenu, Integer>
 	@Modifying
 	@Query("DELETE FROM CuentaMenu cm WHERE cm.cuenta = :cuenta")
 	public void deleteCuentaMenuByCuenta(Cuenta cuenta);
+	
 }

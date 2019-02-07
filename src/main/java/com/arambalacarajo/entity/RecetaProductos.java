@@ -27,17 +27,23 @@ public class RecetaProductos {
 	private Productos producto;
 
 	@Column(name = "cantidad")
-	private int cantidad;
+	private double	 cantidad;
+	
+	@ManyToOne
+	@JoinColumn(name="id_medida")
+	private MedidaProducto medida;
 
 	public RecetaProductos() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public RecetaProductos(int idRecetaProducto, Recetas receta, Productos producto, int cantidad) {
+	public RecetaProductos(int idRecetaProducto, Recetas receta, Productos producto, double cantidad,
+			MedidaProducto medida) {
 		this.idRecetaProducto = idRecetaProducto;
 		this.receta = receta;
 		this.producto = producto;
 		this.cantidad = cantidad;
+		this.medida = medida;
 	}
 
 	public int getIdRecetaProducto() {
@@ -64,18 +70,23 @@ public class RecetaProductos {
 		this.producto = producto;
 	}
 
-	public int getCantidad() {
+	public double getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(int cantidad) {
+	public void setCantidad(double cantidad) {
 		this.cantidad = cantidad;
 	}
 
-	@Override
-	public String toString() {
-		return "RecetaProductos [idRecetaProducto=" + idRecetaProducto + ", receta=" + receta + ", producto=" + producto
-				+ ", cantidad=" + cantidad + "]";
+	public MedidaProducto getMedida() {
+		return medida;
 	}
 
+	public void setMedida(MedidaProducto medida) {
+		this.medida = medida;
+	}
+
+		
+
+	
 }

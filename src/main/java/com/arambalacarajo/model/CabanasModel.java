@@ -1,10 +1,10 @@
 package com.arambalacarajo.model;
 
-import java.util.Arrays;
+
 
 public class CabanasModel {
 
-	private char[] codCabana;
+	private String codCabana;
 
 	private String nombre;
 
@@ -15,10 +15,10 @@ public class CabanasModel {
 	private String detalle;
 
 	public CabanasModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public CabanasModel(char[] codCabana, String nombre, String precio, boolean disponible, String detalle) {
+	public CabanasModel(String codCabana, String nombre, String precio, boolean disponible, String detalle) {
 		this.codCabana = codCabana;
 		this.nombre = nombre;
 		this.precio = precio;
@@ -26,11 +26,11 @@ public class CabanasModel {
 		this.detalle = detalle;
 	}
 
-	public char[] getCodCabana() {
+	public String getCodCabana() {
 		return codCabana;
 	}
 
-	public void setCodCabana(char[] codCabana) {
+	public void setCodCabana(String codCabana) {
 		this.codCabana = codCabana;
 	}
 
@@ -64,12 +64,6 @@ public class CabanasModel {
 
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
-	}
-
-	@Override
-	public String toString() {
-		return "Cabañas [cod_cabaña=" + Arrays.toString(codCabana) + ", nombre=" + nombre + ", precio=" + precio
-				+ ", disponible=" + disponible + ", detalle=" + detalle + "]";
 	}
 
 }

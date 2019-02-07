@@ -1,18 +1,25 @@
 package com.arambalacarajo.entity;
 
-import java.util.Arrays;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Parameter;
 
 @Entity
 @Table(name = "cabanas")
 public class Cabanas {
 	@Id
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "C"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	
 	@Column(name = "cod_cabana")
-	private char[] codCabana;
+	private String codCabana;
 
 	@Column(name = "nombre")
 	private String nombre;
@@ -23,14 +30,14 @@ public class Cabanas {
 	@Column(name = "disponible")
 	private boolean disponible;
 
-	@Column(name = "detalle")
+	@Column(name = "detalle", nullable = true)
 	private String detalle;
 
 	public Cabanas() {
-		// TODO Auto-generated constructor stub
+	
 	}
 
-	public Cabanas(char[] codCabana, String nombre, String precio, boolean disponible, String detalle) {
+	public Cabanas(String codCabana, String nombre, String precio, boolean disponible, String detalle) {
 		this.codCabana = codCabana;
 		this.nombre = nombre;
 		this.precio = precio;
@@ -38,11 +45,11 @@ public class Cabanas {
 		this.detalle = detalle;
 	}
 
-	public char[] getCodCabana() {
+	public String getCodCabana() {
 		return codCabana;
 	}
 
-	public void setCodCabana(char[] codCabana) {
+	public void setCodCabana(String codCabana) {
 		this.codCabana = codCabana;
 	}
 
@@ -78,10 +85,6 @@ public class Cabanas {
 		this.detalle = detalle;
 	}
 
-	@Override
-	public String toString() {
-		return "Cabañas [cod_cabaña=" + Arrays.toString(codCabana) + ", nombre=" + nombre + ", precio=" + precio
-				+ ", disponible=" + disponible + ", detalle=" + detalle + "]";
-	}
+	
 
 }

@@ -9,7 +9,7 @@ public class EmpleadoVentasModel {
 	private EmpleadosModel empleado;
 
 	public EmpleadoVentasModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public EmpleadoVentasModel(int idEmpleadoVenta, VentasModel venta, EmpleadosModel empleado) {

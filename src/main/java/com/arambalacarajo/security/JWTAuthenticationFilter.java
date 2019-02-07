@@ -21,7 +21,6 @@ import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import static com.arambalacarajo.security.model.SecurityConstants.EXPIRATION_TIME;
-import static com.arambalacarajo.security.model.SecurityConstants.HEADER_STRING;
 import static com.arambalacarajo.security.model.SecurityConstants.SECRET;
 import static com.arambalacarajo.security.model.SecurityConstants.TOKEN_PREFIX;
 

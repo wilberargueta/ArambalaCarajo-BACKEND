@@ -27,7 +27,7 @@ public class CuentaUsuario {
 	private Cuenta cuenta;
 
 	public CuentaUsuario() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CuentaUsuario(int idCuentaUsuario, Usuario usuario, Cuenta cuenta) {

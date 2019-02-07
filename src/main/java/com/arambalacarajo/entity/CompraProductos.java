@@ -31,7 +31,7 @@ public class CompraProductos {
 	private int cantidad;
 
 	public CompraProductos() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public CompraProductos(int idCompraProducto, Compras compras, Productos productos, int cantidad) {

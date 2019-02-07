@@ -2,6 +2,8 @@ package com.arambalacarajo.controller;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,7 +24,9 @@ public class ExistenciasController {
 	@Autowired
 	@Qualifier("existenciasService")
 	private ExistenciasService cps;
-
+	
+	private Log LOGG = LogFactory.getLog(ExistenciasController.class);
+	
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/existencias", method = RequestMethod.POST)
 	public Message nuevo(@RequestBody ExistenciasModel cp) {
@@ -33,7 +37,7 @@ public class ExistenciasController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/existencias/update", method = RequestMethod.POST)
 	public Message actualizar(@RequestBody ExistenciasModel cp) {
-
+		LOGG.info("Cantidad: " +cp.getCantidad());
 		return cps.updateExistencias(cp);
 	}
 
@@ -59,7 +63,7 @@ public class ExistenciasController {
 	}
 
 	@CrossOrigin(origins = "*")
-	@RequestMapping(path = "/api/existencias/producto", method = RequestMethod.GET)
+	@RequestMapping(path = "/api/existencias/producto", method = RequestMethod.POST)
 	public ExistenciasModel byProducto(@RequestBody ProductosModel p) {
 
 		return cps.findExistenciasByProducto(p);

@@ -1,5 +1,7 @@
 package com.arambalacarajo.service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,12 +32,9 @@ public class VentasService {
 
 	private Message m;
 
-	public Message addVentas(VentasModel em) {
-		m = new Message();
-		evr.save(evc.ModelToEntity(em));
-		m.setStatus(HttpStatus.OK);
-		m.setMessage("Ventas Agregado Correctamente..");
-		return m;
+	public VentasModel addVentas(VentasModel em) {
+
+		return evc.EntityToModel(evr.saveAndFlush(evc.ModelToEntity(em)));
 	}
 
 	public Message deleteVentas(VentasModel em) {
@@ -62,9 +61,18 @@ public class VentasService {
 		return lcpm;
 	}
 
-	public VentasModel findVentasById(int id) {
+	public VentasModel findVentasById(String id) {
 
-		return evc.EntityToModel(evr.findVentasByIdVenta(id));
+		return evc.EntityToModel(evr.findVentasByRegistroVenta(id));
+	}
+
+	public List<VentasModel> listaVentasByFecha(String fecha) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate date = LocalDate.parse(fecha, formatter);
+		List<VentasModel> lcpm = new ArrayList<>();
+		evr.findVentasByFecha(date).forEach(e -> lcpm.add(evc.EntityToModel(e)));
+
+		return lcpm;
 	}
 
 }

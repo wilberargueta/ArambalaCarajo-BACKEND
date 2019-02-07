@@ -26,7 +26,7 @@ public class UsuarioRole {
 	private Usuario usuario;
 
 	public UsuarioRole() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public UsuarioRole(int idUsuarioRole, Role role, Usuario usuario) {

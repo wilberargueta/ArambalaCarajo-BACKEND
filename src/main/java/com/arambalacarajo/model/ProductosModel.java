@@ -1,15 +1,16 @@
 package com.arambalacarajo.model;
 
 import java.time.LocalDate;
-import java.util.Arrays;
+
+import com.arambalacarajo.entity.MedidaProducto;
 
 public class ProductosModel {
 
-	private char[] codProducto;
+	private String codProducto;
 
 	private String nombre;
 
-	private String medida;
+	private MedidaProducto medida;
 
 	private boolean activo;
 
@@ -20,10 +21,10 @@ public class ProductosModel {
 	private LocalDate eliminado;
 
 	public ProductosModel() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public ProductosModel(char[] codProducto, String nombre, String medida, boolean activo, LocalDate creado,
+	public ProductosModel(String codProducto, String nombre, MedidaProducto medida, boolean activo, LocalDate creado,
 			LocalDate actualizado, LocalDate eliminado) {
 		this.codProducto = codProducto;
 		this.nombre = nombre;
@@ -34,11 +35,11 @@ public class ProductosModel {
 		this.eliminado = eliminado;
 	}
 
-	public char[] getCodProducto() {
+	public String getCodProducto() {
 		return codProducto;
 	}
 
-	public void setCodProducto(char[] codProducto) {
+	public void setCodProducto(String codProducto) {
 		this.codProducto = codProducto;
 	}
 
@@ -50,11 +51,11 @@ public class ProductosModel {
 		this.nombre = nombre;
 	}
 
-	public String getMedida() {
+	public MedidaProducto getMedida() {
 		return medida;
 	}
 
-	public void setMedida(String medida) {
+	public void setMedida(MedidaProducto medida) {
 		this.medida = medida;
 	}
 
@@ -90,11 +91,6 @@ public class ProductosModel {
 		this.eliminado = eliminado;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductosModel [codProducto=" + Arrays.toString(codProducto) + ", nombre=" + nombre + ", medida="
-				+ medida + ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado="
-				+ eliminado + "]";
-	}
+	
 
 }

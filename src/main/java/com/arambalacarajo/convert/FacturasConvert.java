@@ -14,9 +14,11 @@ public class FacturasConvert {
 		f.setIdFactura(fm.getIdFactura());
 		f.setCorrelativoFactura(fm.getCorrelativoFactura());
 		f.setNumFactura(fm.getNumFactura());
+		f.setRazonSocial(fm.getRazonSocial());
 		f.setFechaFactura(fm.getFechaFactura());
 		f.setIva(fm.getIva());
 		f.setDetalle(fm.getDetalle());
+		f.setTipoComprobante(fm.getTipoComprobante());
 		return f;
 	}
 
@@ -26,9 +28,11 @@ public class FacturasConvert {
 		f.setIdFactura(fm.getIdFactura());
 		f.setCorrelativoFactura(fm.getCorrelativoFactura());
 		f.setNumFactura(fm.getNumFactura());
+		f.setRazonSocial(fm.getRazonSocial());
 		f.setFechaFactura(fm.getFechaFactura());
 		f.setIva(fm.getIva());
 		f.setDetalle(fm.getDetalle());
+		f.setTipoComprobante(fm.getTipoComprobante());
 		return f;
 	}
 

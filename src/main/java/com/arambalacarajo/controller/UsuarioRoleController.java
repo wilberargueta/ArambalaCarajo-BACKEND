@@ -28,8 +28,9 @@ public class UsuarioRoleController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioRole", method = RequestMethod.POST)
 	public UsuarioRole addUsuarioRole(@RequestBody UsuarioRole ur) {
-
-		return urr.saveAndFlush(ur);
+		UsuarioRole uRT = urr.saveAndFlush(ur);
+		uRT.getUsuario().setPass("");
+		return uRT;
 	}
 
 	@CrossOrigin(origins = "*")
@@ -58,15 +59,17 @@ public class UsuarioRoleController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioRole/{id}", method = RequestMethod.GET)
 	public UsuarioRole getUsuarioRoleById(@PathVariable int id) {
-
-		return urr.findUsuarioRoleByIdUsuarioRole(id);
+		UsuarioRole uRT = urr.findUsuarioRoleByIdUsuarioRole(id);
+		uRT.getUsuario().setPass("");
+		return uRT;
 	}
 
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuarioRole/usuario", method = RequestMethod.POST)
 	public UsuarioRole getUsuarioRoleByUsuario(@RequestBody Usuario ur) {
-
-		return urr.findUsuarioRoleByUsuario(ur);
+		UsuarioRole uRT = urr.findUsuarioRoleByUsuario(ur)	;
+		uRT.getUsuario().setPass("");
+		return uRT;
 	}
 
 	@CrossOrigin(origins = "*")

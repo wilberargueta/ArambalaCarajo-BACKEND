@@ -21,11 +21,11 @@ public class Servicios {
 	@Column(name = "precio")
 	private String precio;
 
-	@Column(name = "detalle")
+	@Column(name = "detalle", nullable = true)
 	private String detalle;
 
 	public Servicios() {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Servicios(int idServicio, String nombre, String precio, String detalle) {
