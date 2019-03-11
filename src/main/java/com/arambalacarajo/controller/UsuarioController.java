@@ -2,6 +2,8 @@ package com.arambalacarajo.controller;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -28,7 +30,8 @@ public class UsuarioController {
 	private UsuarioRepository ur;
 
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
-
+	
+	private final Log LOGG = LogFactory.getLog(UsuarioController.class);
 	public UsuarioController(BCryptPasswordEncoder bCryptPasswordEncoder) {
 		this.bCryptPasswordEncoder = bCryptPasswordEncoder;
 	}
@@ -48,6 +51,8 @@ public class UsuarioController {
 			us.setPass("");
 			r = new Respuesta(new Message(HttpStatus.OK, "Usuario Agregado Correctamnte"), us);
 		}
+		
+		
 
 		return r;
 	}
@@ -56,14 +61,25 @@ public class UsuarioController {
 	@RequestMapping(path = "/api/usuario/update", method = RequestMethod.POST)
 	public Respuesta updateUsuario(@RequestBody Usuario u) {
 		Respuesta r;
-
-		if (ur.existsUsuarioByNick(u.getNick())) {
+		Usuario usrTemp = ur.findUsuarioByIdUsuario(u.getIdUsuario());
+		this.LOGG.info(u.toString());
+		this.LOGG.info(usrTemp.toString());
+		if (u.getNick() == usrTemp.getNick()) {
+			if (!u.getPass().isEmpty())
+				u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
+			else
+				u.setPass(usrTemp.getPass());
+			Usuario us = ur.saveAndFlush(u);
+			us.setPass("");
+			r = new Respuesta(new Message(HttpStatus.OK, "Usuario Agregado Correctamnte"), us);
+		} else if (ur.existsUsuarioByNick(u.getNick()) && u.getIdUsuario() != usrTemp.getIdUsuario()) {
 			r = new Respuesta(new Message(HttpStatus.BAD_REQUEST, "El nick del usuario ya se encuentra duplicado"),
 					null);
-		} else if ((u.getNick() == null) || (u.getPass() == null)) {
-			r = new Respuesta(new Message(HttpStatus.BAD_REQUEST, "No se permiten valores vacios"), null);
 		} else {
-			u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
+			if (!u.getPass().isEmpty())
+				u.setPass(this.bCryptPasswordEncoder.encode(u.getPass()));
+			else
+				u.setPass(usrTemp.getPass());
 			Usuario us = ur.saveAndFlush(u);
 			us.setPass("");
 			r = new Respuesta(new Message(HttpStatus.OK, "Usuario Agregado Correctamnte"), us);
@@ -97,7 +113,7 @@ public class UsuarioController {
 	@CrossOrigin(origins = "*")
 	@RequestMapping(path = "/api/usuario/{nick}", method = RequestMethod.GET)
 	public Usuario getUsuarioByNickBU(@PathVariable String nick) {
-		Usuario us =  ur.findFirstUsuarioByNickContaining(nick);
+		Usuario us = ur.findFirstUsuarioByNickContaining(nick);
 		us.setPass("");
 		return us;
 	}

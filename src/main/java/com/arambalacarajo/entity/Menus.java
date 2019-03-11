@@ -1,4 +1,4 @@
- package com.arambalacarajo.entity;
+package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
 
@@ -12,117 +12,147 @@ import javax.persistence.Table;
 @Table(name = "menus")
 public class Menus {
 
-	@Id
-	@Column(name = "id_menu", nullable = false)
-	@GeneratedValue
-	private int idMenu;
+    @Id
+    @Column(name = "id_menu", nullable = false)
+    @GeneratedValue
+    private int idMenu;
 
-	@Column(name = "nombre", nullable = false)
-	private String nombre;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
-	@Column(name = "detalles", nullable = true)
-	private String detalles;
+    @Column(name = "detalles", nullable = true)
+    private String detalles;
 
-	@Column(name = "precio", nullable = false)
-	private String precio;
+    @Column(name = "precio", nullable = false)
+    private String precio;
 
-	@Column(name = "activo", nullable = false)
-	private Boolean activo = true;
+    @Column(name = "activo", nullable = false)
+    private Boolean activo = true;
 
-	@Column(name = "creado", nullable = false)
-	private LocalDate creado = LocalDate.now();
+    @Column(name = "creado", nullable = false)
+    private LocalDate creado = LocalDate.now();
 
-	@Column(name = "actualizado", nullable = false)
-	private LocalDate actualizado = LocalDate.now();
+    @Column(name = "actualizado", nullable = false)
+    private LocalDate actualizado = LocalDate.now();
 
-	@Column(name = "eliminado")
-	private LocalDate eliminado;
+    @Column(name = "eliminado")
+    private LocalDate eliminado;
 
-	public Menus() {
+    @Column(name = "iva")
+    private boolean IVA;
 
-	}
+    @Column(name = "it")
+    private boolean IT;
 
-	public Menus(int idMenu, String nombre, String detalles, String precio, Boolean activo, LocalDate creado,
-			LocalDate actualizado, LocalDate eliminado) {
-		this.idMenu = idMenu;
-		this.nombre = nombre;
-		this.detalles = detalles;
-		this.precio = precio;
-		this.activo = activo;
-		this.creado = creado;
-		this.actualizado = actualizado;
-		this.eliminado = eliminado;
-	}
+    public Menus() {
 
-	public int getIdMenu() {
-		return idMenu;
-	}
+    }
 
-	public void setIdMenu(int idMenu) {
-		this.idMenu = idMenu;
-	}
+    public Menus(String nombre, String detalles, String precio, Boolean activo, LocalDate creado, LocalDate actualizado, LocalDate eliminado, boolean IVA, boolean IT) {
+        this.nombre = nombre;
+        this.detalles = detalles;
+        this.precio = precio;
+        this.activo = activo;
+        this.creado = creado;
+        this.actualizado = actualizado;
+        this.eliminado = eliminado;
+        this.IVA = IVA;
+        this.IT = IT;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public int getIdMenu() {
+        return idMenu;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setIdMenu(int idMenu) {
+        this.idMenu = idMenu;
+    }
 
-	public String getDetalles() {
-		return detalles;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setDetalles(String detalles) {
-		this.detalles = detalles;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getPrecio() {
-		return precio;
-	}
+    public String getDetalles() {
+        return detalles;
+    }
 
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
 
-	public Boolean getActivo() {
-		return activo;
-	}
+    public String getPrecio() {
+        return precio;
+    }
 
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
-	}
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
 
-	public LocalDate getCreado() {
-		return creado;
-	}
+    public Boolean getActivo() {
+        return activo;
+    }
 
-	public void setCreado(LocalDate creado) {
-		this.creado = creado;
-	}
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
-	public LocalDate getActualizado() {
-		return actualizado;
-	}
+    public LocalDate getCreado() {
+        return creado;
+    }
 
-	public void setActualizado(LocalDate actualizado) {
-		this.actualizado = actualizado;
-	}
+    public void setCreado(LocalDate creado) {
+        this.creado = creado;
+    }
 
-	public LocalDate getEliminado() {
-		return eliminado;
-	}
+    public LocalDate getActualizado() {
+        return actualizado;
+    }
 
-	public void setEliminado(LocalDate eliminado) {
-		this.eliminado = eliminado;
-	}
+    public void setActualizado(LocalDate actualizado) {
+        this.actualizado = actualizado;
+    }
 
-	@Override
-	public String toString() {
-		return "Menus [idMenu=" + idMenu + ", nombre=" + nombre + ", detalles=" + detalles + ", precio=" + precio
-				+ ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado="
-				+ eliminado + "]";
-	}
+    public LocalDate getEliminado() {
+        return eliminado;
+    }
 
+    public void setEliminado(LocalDate eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public boolean getIVA() {
+        return IVA;
+    }
+
+    public void setIVA(boolean IVA) {
+        this.IVA = IVA;
+    }
+
+    public boolean getIT() {
+        return IT;
+    }
+
+    public void setIT(boolean IT) {
+        this.IT = IT;
+    }
+
+    @Override
+    public String toString() {
+        return "Menus{" +
+                "idMenu=" + idMenu +
+                ", nombre='" + nombre + '\'' +
+                ", detalles='" + detalles + '\'' +
+                ", precio='" + precio + '\'' +
+                ", activo=" + activo +
+                ", creado=" + creado +
+                ", actualizado=" + actualizado +
+                ", eliminado=" + eliminado +
+                ", IVA=" + IVA +
+                ", IT=" + IT +
+                '}';
+    }
 }

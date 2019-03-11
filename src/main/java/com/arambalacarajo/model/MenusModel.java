@@ -4,107 +4,136 @@ import java.time.LocalDate;
 
 public class MenusModel {
 
-	private int idMenu;
+    private int idMenu;
 
-	private String nombre;
+    private String nombre;
 
-	private String detalles;
+    private String detalles;
 
-	private String precio;
+    private String precio;
 
-	private Boolean activo;
+    private Boolean activo;
 
-	private LocalDate creado;
+    private LocalDate creado;
 
-	private LocalDate actualizado;
+    private LocalDate actualizado;
 
-	private LocalDate eliminado;
+    private LocalDate eliminado;
 
-	public MenusModel() {
+    private boolean IVA;
 
-	}
+    private boolean IT;
 
-	public MenusModel(int idMenu, String nombre, String detalles, String precio, Boolean activo, LocalDate creado,
-			LocalDate actualizado, LocalDate eliminado) {
-		this.idMenu = idMenu;
-		this.nombre = nombre;
-		this.detalles = detalles;
-		this.precio = precio;
-		this.activo = activo;
-		this.creado = creado;
-		this.actualizado = actualizado;
-		this.eliminado = eliminado;
-	}
+    public MenusModel() {
 
-	public int getIdMenu() {
-		return idMenu;
-	}
+    }
 
-	public void setIdMenu(int idMenu) {
-		this.idMenu = idMenu;
-	}
+    public MenusModel(int idMenu, String nombre, String detalles, String precio, Boolean activo, LocalDate creado, LocalDate actualizado, LocalDate eliminado, boolean IVA, boolean IT) {
+        this.idMenu = idMenu;
+        this.nombre = nombre;
+        this.detalles = detalles;
+        this.precio = precio;
+        this.activo = activo;
+        this.creado = creado;
+        this.actualizado = actualizado;
+        this.eliminado = eliminado;
+        this.IVA = IVA;
+        this.IT = IT;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public int getIdMenu() {
+        return idMenu;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setIdMenu(int idMenu) {
+        this.idMenu = idMenu;
+    }
 
-	public String getDetalles() {
-		return detalles;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
-	public void setDetalles(String detalles) {
-		this.detalles = detalles;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public String getPrecio() {
-		return precio;
-	}
+    public String getDetalles() {
+        return detalles;
+    }
 
-	public void setPrecio(String precio) {
-		this.precio = precio;
-	}
+    public void setDetalles(String detalles) {
+        this.detalles = detalles;
+    }
 
-	public Boolean getActivo() {
-		return activo;
-	}
+    public String getPrecio() {
+        return precio;
+    }
 
-	public void setActivo(Boolean activo) {
-		this.activo = activo;
-	}
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
 
-	public LocalDate getCreado() {
-		return creado;
-	}
+    public Boolean getActivo() {
+        return activo;
+    }
 
-	public void setCreado(LocalDate creado) {
-		this.creado = creado;
-	}
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
 
-	public LocalDate getActualizado() {
-		return actualizado;
-	}
+    public LocalDate getCreado() {
+        return creado;
+    }
 
-	public void setActualizado(LocalDate actualizado) {
-		this.actualizado = actualizado;
-	}
+    public void setCreado(LocalDate creado) {
+        this.creado = creado;
+    }
 
-	public LocalDate getEliminado() {
-		return eliminado;
-	}
+    public LocalDate getActualizado() {
+        return actualizado;
+    }
 
-	public void setEliminado(LocalDate eliminado) {
-		this.eliminado = eliminado;
-	}
+    public void setActualizado(LocalDate actualizado) {
+        this.actualizado = actualizado;
+    }
 
-	@Override
-	public String toString() {
-		return "Menus [idMenu=" + idMenu + ", nombre=" + nombre + ", detalles=" + detalles + ", precio=" + precio
-				+ ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado="
-				+ eliminado + "]";
-	}
+    public LocalDate getEliminado() {
+        return eliminado;
+    }
 
+    public void setEliminado(LocalDate eliminado) {
+        this.eliminado = eliminado;
+    }
+
+    public boolean getIVA() {
+        return IVA;
+    }
+
+    public void setIVA(boolean IVA) {
+        this.IVA = IVA;
+    }
+
+    public boolean getIT() {
+        return IT;
+    }
+
+    public void setIT(boolean IT) {
+        this.IT = IT;
+    }
+
+    @Override
+    public String toString() {
+        return "MenusModel{" +
+                "idMenu=" + idMenu +
+                ", nombre='" + nombre + '\'' +
+                ", detalles='" + detalles + '\'' +
+                ", precio='" + precio + '\'' +
+                ", activo=" + activo +
+                ", creado=" + creado +
+                ", actualizado=" + actualizado +
+                ", eliminado=" + eliminado +
+                ", IVA=" + IVA +
+                ", IT=" + IT +
+                '}';
+    }
 }

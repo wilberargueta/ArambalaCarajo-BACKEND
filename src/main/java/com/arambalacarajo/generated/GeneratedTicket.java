@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 import org.hibernate.HibernateException;
 import org.hibernate.MappingException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
-import org.hibernate.id.Configurable;
+import org.hibernate.id.Configurable; 
 import org.hibernate.id.IdentifierGenerator;
 import org.hibernate.service.ServiceRegistry;
 import org.hibernate.type.Type;
@@ -23,6 +23,7 @@ public class GeneratedTicket implements IdentifierGenerator, Configurable {
 				session.getEntityPersister(object.getClass().getName(), object).getIdentifierPropertyName(),
 				object.getClass().getSimpleName());
 
+		@SuppressWarnings("unchecked")
 		Stream<String> ids = session.createQuery(query).stream();
 		// ids.forEach(o -> LOGG.info(o));
 

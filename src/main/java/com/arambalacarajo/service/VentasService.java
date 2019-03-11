@@ -5,6 +5,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -31,7 +33,8 @@ public class VentasService {
 	private VentasConvert vc;
 
 	private Message m;
-
+	
+	private final Log LOGG = LogFactory.getLog(VentasService.class);
 	public VentasModel addVentas(VentasModel em) {
 
 		return evc.EntityToModel(evr.saveAndFlush(evc.ModelToEntity(em)));
@@ -72,6 +75,13 @@ public class VentasService {
 		List<VentasModel> lcpm = new ArrayList<>();
 		evr.findVentasByFecha(date).forEach(e -> lcpm.add(evc.EntityToModel(e)));
 
+		return lcpm;
+	}
+
+	public List<VentasModel> findVentasByFechaActual() {
+		List<VentasModel> lcpm = new ArrayList<>();
+		this.LOGG.info(LocalDate.now());
+		evr.findVentasByFecha(LocalDate.now()).forEach(e -> lcpm.add(evc.EntityToModel(e)));
 		return lcpm;
 	}
 

@@ -23,6 +23,7 @@ public class GeneradorProducto implements IdentifierGenerator, Configurable {
 				session.getEntityPersister(object.getClass().getName(), object).getIdentifierPropertyName(),
 				object.getClass().getSimpleName());
 
+		@SuppressWarnings("unchecked")
 		Stream<String> ids = session.createQuery(query).stream();
 		// ids.forEach(o -> LOGG.info(o));
 

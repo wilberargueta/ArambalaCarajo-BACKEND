@@ -18,6 +18,8 @@ public class MenusConvert {
 		m.setCreado(mm.getCreado());
 		m.setActualizado(mm.getActualizado());
 		m.setEliminado(mm.getEliminado());
+		m.setIVA(mm.getIVA());
+		m.setIT(mm.getIT());
 
 		return m;
 	}
@@ -32,6 +34,8 @@ public class MenusConvert {
 		m.setCreado(mm.getCreado());
 		m.setActualizado(mm.getActualizado());
 		m.setEliminado(mm.getEliminado());
+		m.setIVA(mm.getIVA());
+		m.setIT(mm.getIT());
 
 		return m;
 	}

@@ -19,53 +19,54 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import com.arambalacarajo.entity.Usuario;
 import com.auth0.jwt.JWT;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import static com.arambalacarajo.security.model.SecurityConstants.EXPIRATION_TIME;
 import static com.arambalacarajo.security.model.SecurityConstants.SECRET;
 import static com.arambalacarajo.security.model.SecurityConstants.TOKEN_PREFIX;
 
 
-
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
-	
-	 private AuthenticationManager authenticationManager;
-	 
-	 public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
-	        this.authenticationManager = authenticationManager;
-	    }
-	 
-	  @Override
-	    public Authentication attemptAuthentication(HttpServletRequest req,
-	                                                HttpServletResponse res) throws AuthenticationException {
-	        try {
-	            Usuario creds = new ObjectMapper()
-	                    .readValue(req.getInputStream(), Usuario.class);
 
-	            return authenticationManager.authenticate(
-	                    new UsernamePasswordAuthenticationToken(
-	                            creds.getNick(),
-	                            creds.getPass(),
-	                            new ArrayList<>())
-	            );
-	        } catch (IOException e) {
-	            throw new RuntimeException(e);
-	        }
-	    }
-	  @Override
-	    protected void successfulAuthentication(HttpServletRequest req,
-	                                            HttpServletResponse res,
-	                                            FilterChain chain,
-	                                            Authentication auth) throws IOException, ServletException {
+    private AuthenticationManager authenticationManager;
 
-	        String token = JWT.create()
-	                .withSubject(((User) auth.getPrincipal()).getUsername())
-	                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
-	                .withClaim("role", auth.getAuthorities().toString())
-	                .sign(HMAC512(SECRET.getBytes()));
-	        
-	       // res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
-	        res.setContentType(TOKEN_PREFIX + token);
-	        res.setHeader("Authorization", TOKEN_PREFIX + token);
-	    
-	    }
+    public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
+        this.authenticationManager = authenticationManager;
+    }
+
+    @Override
+    public Authentication attemptAuthentication(HttpServletRequest req,
+                                                HttpServletResponse res) throws AuthenticationException {
+        try {
+            Usuario creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), Usuario.class);
+
+            return authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            creds.getNick(),
+                            creds.getPass(),
+                            new ArrayList<>())
+            );
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void successfulAuthentication(HttpServletRequest req,
+                                            HttpServletResponse res,
+                                            FilterChain chain,
+                                            Authentication auth) throws IOException, ServletException {
+
+        String token = JWT.create()
+                .withSubject(((User) auth.getPrincipal()).getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
+                .withClaim("role", auth.getAuthorities().toString())
+                .sign(HMAC512(SECRET.getBytes()));
+
+        // res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
+        res.setContentType(TOKEN_PREFIX + token);
+        res.setHeader("Authorization", TOKEN_PREFIX + token);
+
+    }
 }

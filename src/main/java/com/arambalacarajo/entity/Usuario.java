@@ -57,6 +57,11 @@ public class Usuario {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+
+	@Override
+	public String toString() {
+		return "Usuario [idUsuario=" + idUsuario + ", nick=" + nick + ", pass=" + pass + "]";
+	}
 	
 	
 
