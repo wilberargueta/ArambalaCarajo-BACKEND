@@ -49,7 +49,7 @@ public class CajaVenta {
 		this.idCajaVenta = idCajaVenta;
 	}
 
-	public Ventas getVenta() { 
+	public Ventas getVenta() {
 		return venta;
 	}
 
@@ -78,6 +78,5 @@ public class CajaVenta {
 		return "CajaVenta [idCajaVenta=" + idCajaVenta + ", venta=" + venta + ", cuenta=" + cuenta + ", caja=" + caja
 				+ "]";
 	}
-	
 
 }

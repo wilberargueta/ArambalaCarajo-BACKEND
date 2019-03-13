@@ -38,7 +38,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 		.authorizeRequests()
 		.antMatchers(HttpMethod.POST, "/login")
 		.permitAll()
-		.antMatchers(HttpMethod.GET, "/pdf")
+		.antMatchers(HttpMethod.GET, "/report/ventas/diarias")
 		.permitAll()
 		.antMatchers(HttpMethod.GET, "/")
 		.permitAll()
