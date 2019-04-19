@@ -76,4 +76,11 @@ public class Ventas {
 		this.detalle = detalle;
 	}
 
+	@Override
+	public String toString() {
+		return "Ventas [idVenta=" + idVenta + ", registroVenta=" + registroVenta + ", fecha=" + fecha + ", detalle="
+				+ detalle + "]";
+	}
+	
+	
 }

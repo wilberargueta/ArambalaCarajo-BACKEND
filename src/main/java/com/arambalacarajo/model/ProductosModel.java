@@ -91,6 +91,13 @@ public class ProductosModel {
 		this.eliminado = eliminado;
 	}
 
+	@Override
+	public String toString() {
+		return "ProductosModel [codProducto=" + codProducto + ", nombre=" + nombre + ", medida=" + medida + ", activo="
+				+ activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado=" + eliminado + "]";
+	}
+	
+	
 	
 
 }
