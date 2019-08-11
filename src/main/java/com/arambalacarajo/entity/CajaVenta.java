@@ -9,6 +9,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.arambalacarajo.component.CajaDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 @Entity
 @Table(name = "caja_venta")
 public class CajaVenta {
@@ -28,6 +31,7 @@ public class CajaVenta {
 
 	@ManyToOne
 	@JoinColumn(name = "id_caja")
+	@JsonDeserialize(using = CajaDeserializer.class)
 	private Caja caja;
 
 	public CajaVenta() {

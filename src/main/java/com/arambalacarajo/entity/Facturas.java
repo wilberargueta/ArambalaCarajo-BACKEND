@@ -9,6 +9,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "facturas")
 public class Facturas {
@@ -28,7 +32,9 @@ public class Facturas {
 	private String correlativoFactura;
 
 	@Column(name = "fecha_factura", nullable = false)
-	private LocalDate fechaFactura = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@CreatedDate
+	private LocalDate fechaFactura;
 
 	@Column(name = "iva")
 	private int iva;

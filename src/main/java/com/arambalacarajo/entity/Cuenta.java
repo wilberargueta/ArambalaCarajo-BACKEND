@@ -10,19 +10,30 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+import com.arambalacarajo.component.CuentaDeserializer;
+import com.arambalacarajo.component.CuentaSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "cuenta")
+@JsonDeserialize(using = CuentaDeserializer.class)
+@JsonSerialize(using = CuentaSerializer.class)
 public class Cuenta {
 
 	@Id
-    @GeneratedValue(generator = "prod-generator")
-    @GenericGenerator(name = "prod-generator", 
-      parameters = @Parameter(name = "prefix", value = "C"), 
-      strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "C"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "id_cuenta", unique = true)
 	private String idCuenta;
 
-	@Column(name = "fecha_cuenta", nullable = false, columnDefinition="DATE")
+	@Column(name = "fecha_cuenta", nullable = false, columnDefinition = "DATE")
+	@DateTimeFormat(iso = ISO.DATE, pattern = "dd-MM-yyyy")
+	@JsonFormat(shape = JsonFormat.Shape.OBJECT, pattern = "dd-MM-yyyy")
 	private LocalDate fechaCuenta;
 
 	@Column(name = "descuento", nullable = true)
@@ -33,16 +44,15 @@ public class Cuenta {
 
 	@Column(name = "mesa", nullable = true)
 	private int mesa;
-	
-	@Column(name="cobrada", nullable = false)
+
+	@Column(name = "cobrada", nullable = false)
 	private boolean cobrada;
-	
-	@Column(name="cobrable", nullable = false)
+
+	@Column(name = "cobrable", nullable = false)
 	private boolean cobrable;
-	
 
 	public Cuenta() {
-	
+
 	}
 
 	public Cuenta(String idCuenta, LocalDate fechaCuenta, String descuento, String nombre, int mesa, boolean cobrada,
@@ -54,7 +64,7 @@ public class Cuenta {
 		this.mesa = mesa;
 		this.cobrada = cobrada;
 		this.cobrable = cobrable;
-		
+
 	}
 
 	public String getIdCuenta() {
@@ -118,10 +128,5 @@ public class Cuenta {
 		return "Cuenta [idCuenta=" + idCuenta + ", fechaCuenta=" + fechaCuenta + ", descuento=" + descuento
 				+ ", nombre=" + nombre + ", mesa=" + mesa + ", cobrada=" + cobrada + ", cobrable=" + cobrable + "]";
 	}
-
-
-
-	
-	
 
 }

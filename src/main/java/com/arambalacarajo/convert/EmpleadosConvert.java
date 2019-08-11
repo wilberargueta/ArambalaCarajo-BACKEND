@@ -21,7 +21,7 @@ public class EmpleadosConvert {
 		e.setActivo(em.isActivo());
 		e.setCreado(em.getCreado());
 		e.setActualizado(em.getActualizado());
-		e.setEliminado(em.getEliminado());
+
 
 		return e;
 
@@ -40,7 +40,7 @@ public class EmpleadosConvert {
 		e.setActivo(em.isActivo());
 		e.setCreado(em.getCreado());
 		e.setActualizado(em.getActualizado());
-		e.setEliminado(em.getEliminado());
+
 
 		return e;
 

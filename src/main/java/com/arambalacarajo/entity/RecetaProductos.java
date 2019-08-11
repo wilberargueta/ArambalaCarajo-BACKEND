@@ -2,6 +2,8 @@ package com.arambalacarajo.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -27,18 +29,17 @@ public class RecetaProductos {
 	private Productos producto;
 
 	@Column(name = "cantidad")
-	private double	 cantidad;
-	
-	@ManyToOne
-	@JoinColumn(name="id_medida")
-	private MedidaProducto medida;
+	private double cantidad;
+
+	@Enumerated(EnumType.STRING)
+	private Medidas medida;
 
 	public RecetaProductos() {
-		
+
 	}
 
-	public RecetaProductos(int idRecetaProducto, Recetas receta, Productos producto, double cantidad,
-			MedidaProducto medida) {
+	public RecetaProductos(int idRecetaProducto, Recetas receta, Productos producto, double cantidad, Medidas medida) {
+		super();
 		this.idRecetaProducto = idRecetaProducto;
 		this.receta = receta;
 		this.producto = producto;
@@ -78,15 +79,18 @@ public class RecetaProductos {
 		this.cantidad = cantidad;
 	}
 
-	public MedidaProducto getMedida() {
+	public Medidas getMedida() {
 		return medida;
 	}
 
-	public void setMedida(MedidaProducto medida) {
+	public void setMedida(Medidas medida) {
 		this.medida = medida;
 	}
 
-		
+	@Override
+	public String toString() {
+		return "RecetaProductos [idRecetaProducto=" + idRecetaProducto + ", receta=" + receta + ", producto=" + producto
+				+ ", cantidad=" + cantidad + ", medida=" + medida + "]";
+	}
 
-	
 }

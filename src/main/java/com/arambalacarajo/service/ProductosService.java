@@ -67,8 +67,8 @@ public class ProductosService {
 
 		return lcpm;
 	}
-	
-	public List<ProductosModel> listaActivos(){
+
+	public List<ProductosModel> listaActivos() {
 		List<ProductosModel> lcpm = new ArrayList<>();
 		evr.findProductos().forEach(e -> lcpm.add(evc.EntityToModel(e)));
 		return lcpm;

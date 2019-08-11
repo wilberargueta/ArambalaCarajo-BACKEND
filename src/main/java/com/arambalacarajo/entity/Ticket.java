@@ -10,6 +10,9 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.data.annotation.CreatedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "ticket")
@@ -21,7 +24,9 @@ public class Ticket {
 	@Column(name = "cod_ticket", unique = true)
 	private String codTicket;
 
-	@Column(name = "fecha_ticket", columnDefinition="DATE")
+	@Column(name = "fecha_ticket", columnDefinition = "DATE")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@CreatedDate
 	private LocalDate fechaTicket;
 
 	public Ticket() {

@@ -55,7 +55,7 @@ public class CategoriaController {
 	@RequestMapping(path="/api/categoria", method = RequestMethod.GET)
 	public List<Categoria> getCategoria() {
 	
-		return cr.findAll();
+		return cr.findCategorias();
 	}
 	
 	@CrossOrigin(origins="*")

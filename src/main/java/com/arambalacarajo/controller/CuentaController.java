@@ -4,8 +4,6 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -26,11 +24,10 @@ public class CuentaController {
 	@Qualifier("cuentaRepository")
 	private CuentaRepository cr;
 	
-	private Log LOGGER = LogFactory.getLog(CuentaController.class);
 
 	@RequestMapping(path = "/api/cuenta", method = RequestMethod.POST)
 	public Cuenta addCuenta(@RequestBody Cuenta cuenta) {
-		LOGGER.info(cuenta.toString());
+	
 		return this.cr.save(cuenta);
 	}
 

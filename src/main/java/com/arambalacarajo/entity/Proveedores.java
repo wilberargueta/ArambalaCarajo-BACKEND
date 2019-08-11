@@ -9,16 +9,18 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "proveedores")
 public class Proveedores {
 
 	@Id
-    @GeneratedValue(generator = "prod-generator")
-    @GenericGenerator(name = "prod-generator", 
-      parameters = @Parameter(name = "prefix", value = "P"), 
-      strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "P"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "cod_proveedor")
 	private String codProveedor;
 
@@ -41,10 +43,14 @@ public class Proveedores {
 	private boolean activo = true;
 
 	@Column(name = "creado", nullable = false)
-	private LocalDate creado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
+	@CreatedDate
+	private LocalDate creado;
 
 	@Column(name = "actualizado", nullable = false)
-	private LocalDate actualizado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
+	@LastModifiedDate
+	private LocalDate actualizado;
 
 	@Column(name = "eliminado")
 	private LocalDate eliminado;
@@ -146,5 +152,4 @@ public class Proveedores {
 		this.eliminado = eliminado;
 	}
 
-	
 }

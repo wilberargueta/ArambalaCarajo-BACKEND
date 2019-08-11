@@ -2,7 +2,8 @@ package com.arambalacarajo.model;
 
 import java.time.LocalDate;
 
-import com.arambalacarajo.entity.MedidaProducto;
+import com.arambalacarajo.entity.Medidas;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ProductosModel {
 
@@ -10,22 +11,26 @@ public class ProductosModel {
 
 	private String nombre;
 
-	private MedidaProducto medida;
-
 	private boolean activo;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate creado;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate actualizado;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate eliminado;
 
+	private Medidas medida;
+
 	public ProductosModel() {
-		
+
 	}
 
-	public ProductosModel(String codProducto, String nombre, MedidaProducto medida, boolean activo, LocalDate creado,
+	public ProductosModel(String codProducto, String nombre, Medidas medida, boolean activo, LocalDate creado,
 			LocalDate actualizado, LocalDate eliminado) {
+		super();
 		this.codProducto = codProducto;
 		this.nombre = nombre;
 		this.medida = medida;
@@ -51,11 +56,11 @@ public class ProductosModel {
 		this.nombre = nombre;
 	}
 
-	public MedidaProducto getMedida() {
+	public Medidas getMedida() {
 		return medida;
 	}
 
-	public void setMedida(MedidaProducto medida) {
+	public void setMedida(Medidas medida) {
 		this.medida = medida;
 	}
 
@@ -96,8 +101,5 @@ public class ProductosModel {
 		return "ProductosModel [codProducto=" + codProducto + ", nombre=" + nombre + ", medida=" + medida + ", activo="
 				+ activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado=" + eliminado + "]";
 	}
-	
-	
-	
 
 }

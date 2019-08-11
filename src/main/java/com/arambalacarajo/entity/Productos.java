@@ -4,23 +4,28 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import com.arambalacarajo.component.ProductosSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 @Entity
 @Table(name = "productos")
+@JsonSerialize(using = ProductosSerializer.class)
 public class Productos {
 	@Id
 	@GeneratedValue(generator = "prod-generator")
-	@GenericGenerator(name = "prod-generator", 
-	parameters = @Parameter(name = "prefix", value = "P"), 
-	strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "P"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "cod_producto")
 	private String codProducto;
 
@@ -31,24 +36,29 @@ public class Productos {
 	private boolean activo = true;
 
 	@Column(name = "creado", nullable = false)
-	private LocalDate creado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@CreatedDate
+	private LocalDate creado;
 
 	@Column(name = "actualizado", nullable = false)
-	private LocalDate actualizado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@LastModifiedDate
+	private LocalDate actualizado;
 
 	@Column(name = "eliminado")
 	private LocalDate eliminado;
 
-	@ManyToOne
-	@JoinColumn(name = "medida", nullable = false)
-	private MedidaProducto medida;
+	@Enumerated(EnumType.STRING)
+	@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+	private Medidas medida;
 
 	public Productos() {
-	
+
 	}
 
 	public Productos(String codProducto, String nombre, boolean activo, LocalDate creado, LocalDate actualizado,
-			LocalDate eliminado, MedidaProducto medida) {
+			LocalDate eliminado, Medidas medida) {
+		super();
 		this.codProducto = codProducto;
 		this.nombre = nombre;
 		this.activo = activo;
@@ -106,13 +116,19 @@ public class Productos {
 		this.eliminado = eliminado;
 	}
 
-	public MedidaProducto getMedida() {
+	public Medidas getMedida() {
 		return medida;
 	}
 
-	public void setMedida(MedidaProducto medida) {
+	public void setMedida(Medidas medida) {
 		this.medida = medida;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "Productos [codProducto=" + codProducto + ", nombre=" + nombre + ", activo=" + activo + ", creado="
+				+ creado + ", actualizado=" + actualizado + ", eliminado=" + eliminado + ", medida=" + medida + "]";
+	}
+
+	
 }

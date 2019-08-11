@@ -11,30 +11,30 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity()
 @Table(name = "ventas")
 public class Ventas {
 
-	
 	@Column(name = "id_venta", nullable = true)
 	private int idVenta;
 
 	@Id
 	@GeneratedValue(generator = "prod-generator")
-	@GenericGenerator(name = "prod-generator", 
-	parameters = @Parameter(name = "prefix", value = "V"), 
-	strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "V"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "registro_venta", unique = true)
 	private String registroVenta;
 
 	@Column(name = "fecha", nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate fecha;
 
 	@Column(name = "detalle", nullable = true)
 	private String detalle;
 
 	public Ventas() {
-	
+
 	}
 
 	public Ventas(int idVenta, String registroVenta, LocalDate fecha, String detalle) {
@@ -81,6 +81,5 @@ public class Ventas {
 		return "Ventas [idVenta=" + idVenta + ", registroVenta=" + registroVenta + ", fecha=" + fecha + ", detalle="
 				+ detalle + "]";
 	}
-	
-	
+
 }

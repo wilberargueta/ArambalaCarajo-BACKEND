@@ -27,4 +27,7 @@ public interface CuentaUsuarioRepository extends JpaRepository<CuentaUsuario, In
 	@Query("DELETE FROM CuentaUsuario cu WHERE cu.cuenta = :cuenta")
 	public void deleteCuentaUsuarioByCuenta(Cuenta cuenta);
 	
+	@Query("SELECT cu FROM CuentaUsuario cu WHERE cu.usuario = :usuario AND CURRENT_DATE = cu.cuenta.fechaCuenta AND cu.cuenta.cobrada = false")
+	public List<CuentaUsuario> findCuentaUsuarioByUsuarioNow(Usuario usuario);
+	
 }

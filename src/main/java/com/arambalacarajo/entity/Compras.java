@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -14,6 +15,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "compras")
@@ -29,20 +32,21 @@ public class Compras {
 	private String registroCompra;
 
 	@Column(name = "fecha_compra")
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate fechaCompra;
 
 	@Column(name = "detalle", nullable = true)
 	private String detalle;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cod_proveedor")
 	private Proveedores proveedor;
 
-	@OneToMany(mappedBy = "compras")
+	@OneToMany(mappedBy = "compras", fetch = FetchType.EAGER)
 	private List<CompraProductos> compraProducto;
 
 	public Compras() {
-		
+
 	}
 
 	public Compras(int idCompra, String registroCompra, LocalDate fechaCompra, String detalle, Proveedores proveedor) {

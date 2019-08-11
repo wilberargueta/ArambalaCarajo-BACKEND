@@ -2,6 +2,11 @@ package com.arambalacarajo.model;
 
 import java.time.LocalDate;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class EmpleadosModel {
 
 	private String codEmpleado;
@@ -11,7 +16,7 @@ public class EmpleadosModel {
 	private String apellido;
 
 	private String dui;
-
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate fechaNacimiento;
 
 	private String direccion;
@@ -19,15 +24,19 @@ public class EmpleadosModel {
 	private String telefono;
 
 	private boolean activo = true;
-
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@CreatedDate
 	private LocalDate creado;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@LastModifiedDate
 	private LocalDate actualizado;
 
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate eliminado;
 
 	public EmpleadosModel() {
-		
+
 	}
 
 	public EmpleadosModel(String codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
@@ -134,6 +143,12 @@ public class EmpleadosModel {
 		this.eliminado = eliminado;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "EmpleadosModel [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", apellido=" + apellido + ", dui="
+				+ dui + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion + ", telefono=" + telefono
+				+ "]";
+	}
+		
 
 }

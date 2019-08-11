@@ -71,4 +71,10 @@ public class CuentaMenu {
 		this.cantidad = cantidad;
 	}
 
+	@Override
+	public String toString() {
+		return "CuentaMenu [idCuentaMenu=" + idCuentaMenu + ", cuenta=" + cuenta + ", menu=" + menu + ", cantidad="
+				+ cantidad + "]";
+	}
+
 }

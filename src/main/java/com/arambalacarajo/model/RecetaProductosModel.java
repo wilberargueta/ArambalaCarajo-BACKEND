@@ -1,6 +1,9 @@
 package com.arambalacarajo.model;
 
-import com.arambalacarajo.entity.MedidaProducto;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
+import com.arambalacarajo.entity.Medidas;
 
 public class RecetaProductosModel {
 
@@ -11,14 +14,16 @@ public class RecetaProductosModel {
 	private ProductosModel producto;
 
 	private double cantidad;
-	
-	private MedidaProducto medida;
-	
+
+	@Enumerated(EnumType.STRING)
+	private Medidas medida;
+
 	public RecetaProductosModel() {
 	}
 
 	public RecetaProductosModel(int idRecetaProducto, RecetasModel receta, ProductosModel producto, double cantidad,
-			MedidaProducto medida) {
+			Medidas medida) {
+		super();
 		this.idRecetaProducto = idRecetaProducto;
 		this.receta = receta;
 		this.producto = producto;
@@ -58,13 +63,18 @@ public class RecetaProductosModel {
 		this.cantidad = cantidad;
 	}
 
-	public MedidaProducto getMedida() {
+	public Medidas getMedida() {
 		return medida;
 	}
 
-	public void setMedida(MedidaProducto medida) {
+	public void setMedida(Medidas medida) {
 		this.medida = medida;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "RecetaProductosModel [idRecetaProducto=" + idRecetaProducto + ", receta=" + receta + ", producto="
+				+ producto + ", cantidad=" + cantidad + ", medida=" + medida + "]";
+	}
 
 }

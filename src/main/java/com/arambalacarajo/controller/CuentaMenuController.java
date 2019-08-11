@@ -2,8 +2,6 @@ package com.arambalacarajo.controller;
 
 import java.util.List;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
@@ -21,7 +19,6 @@ import com.arambalacarajo.repository.CuentaMenuRepository;
 @RestController
 public class CuentaMenuController {
 
-	Log LOG = LogFactory.getLog(CuentaMenuController.class);
 
 	@Autowired
 	@Qualifier("cuentaMenuRepository")
@@ -29,8 +26,9 @@ public class CuentaMenuController {
 
 	@RequestMapping(path = "/api/cuentaMenu", method = RequestMethod.POST)
 	public CuentaMenu addCuentaMenu(@RequestBody CuentaMenu c) {
+		CuentaMenu cm = this.cr.saveAndFlush(c);
 
-		return this.cr.saveAndFlush(c);
+		return cm;
 	}
 
 	@RequestMapping(path = "/api/cuentaMenu/all", method = RequestMethod.POST)

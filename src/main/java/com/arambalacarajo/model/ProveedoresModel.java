@@ -2,6 +2,7 @@ package com.arambalacarajo.model;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ProveedoresModel {
 
@@ -18,15 +19,18 @@ public class ProveedoresModel {
 	private String correo;
 
 	private boolean activo = true;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate creado;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate actualizado;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate eliminado;
 
 	public ProveedoresModel() {
-	
+
 	}
 
 	public ProveedoresModel(String codProveedor, String razonSocial, char[] nit, char[] telefono, String direccion,
@@ -123,5 +127,4 @@ public class ProveedoresModel {
 		this.eliminado = eliminado;
 	}
 
-	
 }

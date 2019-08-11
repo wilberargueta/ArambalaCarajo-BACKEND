@@ -2,7 +2,6 @@ package com.arambalacarajo.entity;
 
 import java.time.LocalDate;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,8 +10,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.arambalacarajo.component.CajaDeserializer;
+import com.arambalacarajo.component.CajaSerializer;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "caja")
+@JsonDeserialize(using = CajaDeserializer.class)
+@JsonSerialize(using = CajaSerializer.class)
 public class Caja {
 
 	@Id
@@ -21,9 +28,11 @@ public class Caja {
 	private int idCaja;
 
 	@Column(name = "apertura_caja")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate aperturaCaja;
 
 	@Column(name = "cierre_caja", nullable = true)
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate cierreCaja;
 
 	@Column(name = "monto_apertura")
@@ -109,7 +118,5 @@ public class Caja {
 	public void setCajaCerrada(boolean cajaCerrada) {
 		this.cajaCerrada = cajaCerrada;
 	}
-
-	
 
 }

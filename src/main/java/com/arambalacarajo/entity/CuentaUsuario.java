@@ -9,25 +9,29 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.arambalacarajo.component.CuentaDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 @Entity
-@Table(name="cuenta_usuario")
+@Table(name = "cuenta_usuario")
 public class CuentaUsuario {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="id_cuenta_usuario")
+	@Column(name = "id_cuenta_usuario")
 	private int idCuentaUsuario;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_usuario")
+	@JoinColumn(name = "id_usuario")
 	private Usuario usuario;
-	
+
 	@ManyToOne
-	@JoinColumn(name="id_cuenta")
+	@JoinColumn(name = "id_cuenta")
+	@JsonDeserialize(using = CuentaDeserializer.class)
 	private Cuenta cuenta;
 
 	public CuentaUsuario() {
-		
+
 	}
 
 	public CuentaUsuario(int idCuentaUsuario, Usuario usuario, Cuenta cuenta) {
@@ -59,7 +63,11 @@ public class CuentaUsuario {
 	public void setCuenta(Cuenta cuenta) {
 		this.cuenta = cuenta;
 	}
-	
-	
+
+	@Override
+	public String toString() {
+		return "CuentaUsuario [idCuentaUsuario=" + idCuentaUsuario + ", usuario=" + usuario + ", cuenta=" + cuenta
+				+ "]";
+	}
 
 }

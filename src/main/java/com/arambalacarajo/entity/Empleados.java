@@ -10,16 +10,18 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "empleados")
 public class Empleados {
 
 	@Id
-    @GeneratedValue(generator = "prod-generator")
-    @GenericGenerator(name = "prod-generator", 
-      parameters = @Parameter(name = "prefix", value = "E"), 
-      strategy = "com.arambalacarajo.generated.GeneradorProducto")
+	@GeneratedValue(generator = "prod-generator")
+	@GenericGenerator(name = "prod-generator", parameters = @Parameter(name = "prefix", value = "E"), strategy = "com.arambalacarajo.generated.GeneradorProducto")
 	@Column(name = "cod_empleado", unique = true)
 	private String codEmpleado;
 
@@ -33,6 +35,7 @@ public class Empleados {
 	private String dui;
 
 	@Column(name = "f_nacimiento", nullable = false)
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate fechaNacimiento;
 
 	@Column(name = "direccion", nullable = false)
@@ -42,19 +45,23 @@ public class Empleados {
 	private String telefono;
 
 	@Column(name = "activo", nullable = false)
-	private boolean activo = true;
+	private boolean activo;
 
 	@Column(name = "creado", nullable = false)
-	private LocalDate creado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@CreatedDate
+	private LocalDate creado;
 
 	@Column(name = "actualizado", nullable = false)
-	private LocalDate actualizado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@LastModifiedDate
+	private LocalDate actualizado;
 
 	@Column(name = "eliminado")
 	private LocalDate eliminado;
 
 	public Empleados() {
-		
+
 	}
 
 	public Empleados(String codEmpleado, String nombre, String apellido, String dui, LocalDate fechaNacimiento,
@@ -161,6 +168,13 @@ public class Empleados {
 		this.eliminado = eliminado;
 	}
 
-	
+	@Override
+	public String toString() {
+		return "Empleados [codEmpleado=" + codEmpleado + ", nombre=" + nombre + ", apellido=" + apellido + ", dui="
+				+ dui + ", fechaNacimiento=" + fechaNacimiento + ", direccion=" + direccion + ", telefono=" + telefono
+				+ ", activo=" + activo + ", creado=" + creado + ", actualizado=" + actualizado + ", eliminado="
+				+ eliminado + "]";
+	}
+		
 
 }

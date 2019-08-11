@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "menu_cabana")
 public class MenuCabana {
@@ -28,13 +30,15 @@ public class MenuCabana {
 	private Menus menu;
 
 	@Column(name = "fecha_inicio")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate fechaInicio;
 
 	@Column(name = "fecha_final")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
 	private LocalDate fechaFinal;
 
 	public MenuCabana() {
-	
+
 	}
 
 	public MenuCabana(int idCabanaMenu, Cabanas cabana, Menus menu, LocalDate fechaInicio, LocalDate fechaFinal) {

@@ -7,8 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+
+import com.arambalacarajo.component.ConvertirMedidas;
 import com.arambalacarajo.convert.ExistenciasConvert;
 import com.arambalacarajo.convert.ProductosConvert;
+import com.arambalacarajo.entity.Existencias;
+import com.arambalacarajo.entity.RecetaProductos;
 import com.arambalacarajo.model.ExistenciasModel;
 import com.arambalacarajo.model.Message;
 import com.arambalacarajo.model.ProductosModel;
@@ -28,6 +32,10 @@ public class ExistenciasService {
 	@Autowired
 	@Qualifier("productosConvert")
 	private ProductosConvert pc;
+
+	@Autowired
+	@Qualifier("convertMedidas")
+	ConvertirMedidas cm;
 
 	private Message m;
 
@@ -71,6 +79,25 @@ public class ExistenciasService {
 	public ExistenciasModel findExistenciasByProducto(ProductosModel pm) {
 
 		return evc.EntityToModel(evr.findExistenciasByProductos(pc.ModelToEntity(pm)));
+	}
+
+	public void incrementarStok(RecetaProductos rp) {
+		Existencias stockProducto = this.evr.findExistenciasByProductos(rp.getProducto());
+		stockProducto.setCantidad(stockProducto.getCantidad() + this.cm.convertir(rp));
+		this.evr.save(stockProducto);
+
+	}
+
+	public void decrementarStok(RecetaProductos rp) {
+		Existencias stockProducto = this.evr.findExistenciasByProductos(rp.getProducto());
+		if (stockProducto.getCantidad() > 0.0 && stockProducto.getCantidad() > rp.getCantidad()) {
+			stockProducto.setCantidad(stockProducto.getCantidad() - this.cm.convertir(rp));
+			this.evr.save(stockProducto);
+		} else {
+			stockProducto.setCantidad(0.0);
+			this.evr.save(stockProducto);
+		}
+
 	}
 
 }

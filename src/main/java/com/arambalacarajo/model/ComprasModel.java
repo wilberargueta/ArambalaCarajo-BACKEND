@@ -3,12 +3,15 @@ package com.arambalacarajo.model;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class ComprasModel {
 
 	private int idCompra;
 
 	private String registroCompra;
-
+	
+	@JsonFormat(shape = JsonFormat.Shape.ANY, pattern = "dd-MM-yyyy")
 	private LocalDate fechaCompra;
 
 	private String detalle;

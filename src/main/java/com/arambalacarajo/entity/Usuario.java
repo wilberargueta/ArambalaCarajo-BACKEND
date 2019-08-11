@@ -6,8 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Table
 @Entity(name = "usuario")
+@JsonIgnoreProperties(
+        value = {"pass"},
+        allowGetters = true,
+        allowSetters = true
+)
 public class Usuario {
 	
 	@Id

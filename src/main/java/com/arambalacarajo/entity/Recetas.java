@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "recetas")
 public class Recetas {
@@ -27,19 +32,21 @@ public class Recetas {
 	private boolean activa = true;
 
 	@Column(name = "creado", nullable = false)
-	private LocalDate creado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@CreatedDate
+	private LocalDate creado;
 
 	@Column(name = "actualizado", nullable = false)
-	private LocalDate actualizado = LocalDate.now();
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	@LastModifiedDate
+	private LocalDate actualizado;
 
 	@Column(name = "eliminado")
 	private LocalDate eliminado;
 
-	
 	public Recetas() {
-		
-	}
 
+	}
 
 	public Recetas(int idReceta, String nombre, String detalle, boolean activa, LocalDate creado, LocalDate actualizado,
 			LocalDate eliminado) {
@@ -52,78 +59,60 @@ public class Recetas {
 		this.eliminado = eliminado;
 	}
 
-
 	public int getIdReceta() {
 		return idReceta;
 	}
-
 
 	public void setIdReceta(int idReceta) {
 		this.idReceta = idReceta;
 	}
 
-
 	public String getNombre() {
 		return nombre;
 	}
-
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
-
 	public String getDetalle() {
 		return detalle;
 	}
-
 
 	public void setDetalle(String detalle) {
 		this.detalle = detalle;
 	}
 
-
 	public boolean isActiva() {
 		return activa;
 	}
-
 
 	public void setActiva(boolean activa) {
 		this.activa = activa;
 	}
 
-
 	public LocalDate getCreado() {
 		return creado;
 	}
-
 
 	public void setCreado(LocalDate creado) {
 		this.creado = creado;
 	}
 
-
 	public LocalDate getActualizado() {
 		return actualizado;
 	}
-
 
 	public void setActualizado(LocalDate actualizado) {
 		this.actualizado = actualizado;
 	}
 
-
 	public LocalDate getEliminado() {
 		return eliminado;
 	}
 
-
 	public void setEliminado(LocalDate eliminado) {
 		this.eliminado = eliminado;
 	}
-
-	
-
-	
 
 }

@@ -10,8 +10,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.arambalacarajo.entity.CajaVenta;
-import com.arambalacarajo.entity.CuentaMenu;
 import com.arambalacarajo.entity.Empleados;
 import com.arambalacarajo.entity.Menus;
 import com.arambalacarajo.entity.Ventas;

@@ -12,6 +12,7 @@ public interface EmpleadosRepository extends JpaRepository<Empleados, String> {
 
 	public Empleados findEmpleadoByCodEmpleado(String codEmpleado);
 	public List<Empleados> findEmpleadoByNombreContaining(String nombre);
+	public List<Empleados> findEmpleadoByActivo(Boolean activo);
 
 
 }
